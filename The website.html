@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cold War Tensions 1947–1991</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#06060e;
+  --paper:#0b0b16;
+  --card:#10101e;
+  --card2:#161626;
+  --edge:rgba(255,255,255,0.06);
+  --edge2:rgba(255,255,255,0.12);
+  --amber:#c8922a;
+  --amber2:#e8b84b;
+  --amber3:#ffd680;
+  --red:#d93030;
+  --red2:#ff4444;
+  --blue:#2d6fd4;
+  --blue2:#4d8ff4;
+  --text:#b8b8cc;
+  --muted:#52527a;
+  --muted2:#7878a0;
+  --bright:#e8e8f4;
+  --r:3px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  background:var(--ink);
+  color:var(--text);
+  font-family:'DM Mono',monospace;
+  min-height:100vh;
+  overflow-x:hidden;
+  cursor:default;
+}
+
+/* ─── SCAN LINE OVERLAY ─── */
+body::before{
+  content:'';position:fixed;inset:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px);
+  pointer-events:none;z-index:8999;
+}
+/* ─── GRAIN ─── */
+body::after{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='0.06'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:9000;
+}
+
+/* ─── HEADER ─── */
+header{
+  position:relative;overflow:hidden;
+  padding:0;
+  border-bottom:1px solid var(--edge);
+}
+.header-glow{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 120% at 80% 50%,rgba(201,146,42,0.07) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 100% at 10% 50%,rgba(45,111,212,0.06) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 60% at 50% 100%,rgba(217,48,48,0.05) 0%,transparent 70%);
+  pointer-events:none;
+}
+.header-inner{
+  padding:56px 72px 48px;
+  position:relative;z-index:1;
+}
+.header-top{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  gap:32px;flex-wrap:wrap;margin-bottom:40px;
+}
+.classified-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  border:1px solid rgba(201,146,42,0.4);
+  padding:5px 14px 5px 10px;
+  border-radius:2px;
+  font-size:9px;letter-spacing:4px;
+  color:var(--amber);
+  text-transform:uppercase;
+  margin-bottom:24px;
+  position:relative;
+  background:rgba(201,146,42,0.05);
+}
+.classified-badge::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--amber);
+  animation:blink 2s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+
+h1{
+  font-family:'Anton',sans-serif;
+  font-size:clamp(48px,8vw,104px);
+  line-height:0.88;
+  letter-spacing:2px;
+  color:var(--bright);
+  text-transform:uppercase;
+}
+h1 .word-cold{
+  display:block;
+  -webkit-text-stroke:1.5px rgba(255,255,255,0.2);
+  color:transparent;
+  letter-spacing:4px;
+}
+h1 .word-war{
+  display:block;
+  color:var(--amber2);
+  text-shadow:0 0 80px rgba(201,146,42,0.25);
+}
+h1 .word-tensions{
+  display:block;
+  font-size:0.38em;
+  letter-spacing:14px;
+  color:var(--muted2);
+  font-family:'DM Mono',monospace;
+  font-weight:300;
+  margin-top:8px;
+  -webkit-text-stroke:0;
+}
+.header-right{
+  text-align:right;
+  padding-top:8px;
+}
+.stat-block{
+  margin-bottom:18px;
+}
+.stat-num{
+  font-family:'Anton',sans-serif;
+  font-size:36px;
+  color:var(--bright);
+  line-height:1;
+  letter-spacing:1px;
+}
+.stat-label{
+  font-size:8px;letter-spacing:3px;
+  color:var(--muted);text-transform:uppercase;
+  margin-top:2px;
+}
+.divider-h{
+  border:none;border-top:1px solid var(--edge);
+  margin:32px 0 28px;
+}
+.meta-row{
+  display:flex;align-items:center;gap:32px;flex-wrap:wrap;
+}
+.leg{display:flex;align-items:center;gap:9px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted2);}
+.leg-pip{width:8px;height:8px;border-radius:50%;}
+.leg-dash{width:22px;height:2px;border-radius:1px;}
+.leg-sep{width:1px;height:16px;background:var(--edge);}
+
+/* ─── TOOLBAR ─── */
+.toolbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 72px;
+  background:var(--paper);
+  border-bottom:1px solid var(--edge);
+  gap:20px;flex-wrap:wrap;
+  position:sticky;top:0;z-index:200;
+  backdrop-filter:blur(12px);
+}
+.tbar-group{display:flex;align-items:center;gap:6px;}
+.tbar-sep{width:1px;height:24px;background:var(--edge);}
+.tbar-label{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-right:4px;}
+.btn{
+  padding:5px 12px;height:28px;
+  background:transparent;
+  border:1px solid var(--edge);
+  color:var(--muted2);
+  font-family:'DM Mono',monospace;
+  font-size:9px;letter-spacing:1.5px;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:background 0.18s,border-color 0.18s,color 0.18s;
+  border-radius:var(--r);
+  white-space:nowrap;
+}
+.btn:hover{background:rgba(255,255,255,0.04);border-color:var(--edge2);color:var(--text);}
+.btn.active{
+  background:rgba(200,146,42,0.14);
+  border-color:rgba(200,146,42,0.5);
+  color:var(--amber2);
+}
+.btn.active-red{background:rgba(217,48,48,0.12);border-color:rgba(217,48,48,0.4);color:var(--red2);}
+.btn.active-blue{background:rgba(45,111,212,0.12);border-color:rgba(45,111,212,0.4);color:var(--blue2);}
+.btn.active-ch1{background:rgba(120,180,255,0.12);border-color:rgba(120,180,255,0.4);color:#78b4ff;}
+.btn.active-ch2{background:rgba(255,160,60,0.12);border-color:rgba(255,160,60,0.4);color:#ffa03c;}
+.btn.active-ch3{background:rgba(80,210,140,0.12);border-color:rgba(80,210,140,0.4);color:#50d28c;}
+
+/* ─── SECOND TOOLBAR ROW ─── */
+.toolbar2{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:9px 72px;
+  background:rgba(11,11,22,0.97);
+  border-bottom:1px solid var(--edge);
+  gap:16px;flex-wrap:wrap;
+  position:sticky;top:49px;z-index:199;
+  backdrop-filter:blur(12px);
+}
+.range-group{display:flex;align-items:center;gap:8px;}
+.range-input{
+  width:62px;height:28px;
+  background:transparent;
+  border:1px solid var(--edge);
+  border-radius:var(--r);
+  color:var(--text);
+  font-family:'DM Mono',monospace;
+  font-size:10px;letter-spacing:1px;
+  text-align:center;
+  padding:0 6px;
+  transition:border-color 0.18s,background 0.18s;
+  -moz-appearance:textfield;
+}
+.range-input::-webkit-outer-spin-button,
+.range-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+.range-input:focus{
+  outline:none;
+  border-color:rgba(200,146,42,0.5);
+  background:rgba(200,146,42,0.06);
+}
+.range-sep{font-size:11px;color:var(--muted);letter-spacing:1px;}
+.range-go{
+  padding:5px 12px;height:28px;
+  background:rgba(200,146,42,0.12);
+  border:1px solid rgba(200,146,42,0.35);
+  border-radius:var(--r);
+  color:var(--amber2);
+  font-family:'DM Mono',monospace;
+  font-size:9px;letter-spacing:2px;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:background 0.18s,border-color 0.18s;
+}
+.range-go:hover{background:rgba(200,146,42,0.22);border-color:rgba(200,146,42,0.6);}
+.ch-tag{
+  display:inline-block;
+  width:8px;height:8px;border-radius:50%;
+  margin-right:4px;vertical-align:middle;flex-shrink:0;
+}
+
+.zoom-readout{
+  font-size:9px;letter-spacing:2px;color:var(--muted);
+  border:1px solid var(--edge);padding:4px 10px;border-radius:var(--r);
+  min-width:140px;text-align:center;
+}
+.hint{font-size:8px;color:var(--muted);letter-spacing:1px;
+  display:flex;align-items:center;gap:6px;}
+.hint-icon{opacity:0.5;font-size:10px;}
+
+/* ─── CHART WRAP ─── */
+.viz-section{padding:0 72px;}
+.chart-shell{
+  margin-top:28px;
+  border:1px solid var(--edge);
+  border-radius:var(--r);
+  background:var(--paper);
+  overflow:hidden;
+  position:relative;
+}
+.chart-shell::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(200,146,42,0.04) 0%,transparent 60%);
+  pointer-events:none;z-index:0;
+}
+.chart-corner{
+  position:absolute;width:12px;height:12px;
+  z-index:2;pointer-events:none;
+}
+.chart-corner.tl{top:0;left:0;border-top:2px solid var(--amber);border-left:2px solid var(--amber);}
+.chart-corner.tr{top:0;right:0;border-top:2px solid var(--amber);border-right:2px solid var(--amber);}
+.chart-corner.bl{bottom:0;left:0;border-bottom:2px solid var(--amber);border-left:2px solid var(--amber);}
+.chart-corner.br{bottom:0;right:0;border-bottom:2px solid var(--amber);border-right:2px solid var(--amber);}
+
+canvas#mainChart{display:block;width:100%;position:relative;z-index:1;}
+
+.chart-badge{
+  position:absolute;top:12px;right:14px;z-index:3;
+  font-size:8px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--muted);pointer-events:none;
+  display:flex;align-items:center;gap:6px;
+}
+.chart-badge::before{
+  content:'';width:5px;height:5px;border-radius:50%;
+  background:var(--amber);
+  animation:blink 3s ease-in-out infinite;
+}
+
+/* ─── DATE AXIS STRIP ─── */
+.axis-strip{
+  border-top:1px solid var(--edge);
+  border-left:1px solid var(--edge);
+  border-right:1px solid var(--edge);
+  border-radius:0 0 var(--r) var(--r);
+  background:var(--paper);
+  height:36px;overflow:hidden;
+}
+.axis-strip canvas{display:block;width:100%;height:36px;}
+
+/* ─── NAVIGATOR ─── */
+.nav-wrap{
+  margin-top:10px;
+}
+.nav-label-row{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:6px;
+}
+.nav-label{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);}
+.nav-shell{
+  position:relative;height:56px;
+  border:1px solid var(--edge);border-radius:var(--r);
+  background:var(--paper);overflow:hidden;cursor:pointer;
+}
+canvas#navChart{display:block;width:100%;height:100%;}
+.nav-win{
+  position:absolute;top:0;bottom:0;
+  background:rgba(200,146,42,0.07);
+  border:1px solid rgba(200,146,42,0.3);
+  border-radius:2px;
+  cursor:grab;
+}
+.nav-win:active{cursor:grabbing;background:rgba(200,146,42,0.12);}
+.nav-win::after{
+  content:'⠿ ⠿';
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  font-size:8px;color:rgba(200,146,42,0.5);
+  letter-spacing:2px;pointer-events:none;
+}
+
+/* ─── TOOLTIP ─── */
+#tooltip{
+  position:fixed;pointer-events:none;z-index:9500;display:none;
+  width:300px;
+  background:rgba(6,6,14,0.97);
+  border:1px solid var(--edge2);
+  border-top:2px solid var(--amber2);
+  border-radius:var(--r);
+  box-shadow:0 20px 60px rgba(0,0,0,0.7),0 0 0 1px rgba(255,255,255,0.03);
+  overflow:hidden;
+}
+.tt-header{padding:14px 16px 10px;border-bottom:1px solid var(--edge);}
+.tt-date{
+  font-family:'Anton',sans-serif;font-size:13px;letter-spacing:2px;
+  color:var(--amber2);margin-bottom:2px;
+}
+.tt-title{
+  font-family:'DM Serif Display',serif;
+  font-size:16px;color:var(--bright);line-height:1.25;
+  margin-top:4px;
+}
+.tt-body{padding:12px 16px 14px;}
+.tt-desc{
+  font-size:11px;color:var(--muted2);line-height:1.7;
+  font-family:'DM Serif Display',serif;font-style:italic;
+}
+.tt-footer{
+  padding:10px 16px;
+  background:rgba(255,255,255,0.02);
+  border-top:1px solid var(--edge);
+  display:flex;align-items:center;gap:10px;
+}
+.tt-bar-wrap{flex:1;height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;}
+.tt-bar{height:100%;border-radius:2px;transition:width 0.25s;}
+.tt-score{font-size:9px;letter-spacing:1px;color:var(--muted2);}
+.tt-side-tag{
+  font-size:8px;letter-spacing:2px;padding:3px 8px;border-radius:2px;
+  text-transform:uppercase;
+}
+
+/* ─── EVENTS SECTION ─── */
+.events-wrap{
+  padding:48px 72px 72px;
+}
+.events-head{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  border-bottom:1px solid var(--edge);
+  padding-bottom:18px;margin-bottom:24px;flex-wrap:wrap;gap:16px;
+}
+.events-title{
+  font-family:'Anton',sans-serif;
+  font-size:22px;letter-spacing:3px;color:var(--bright);text-transform:uppercase;
+}
+.events-meta{
+  font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;
+}
+.era-filters{
+  display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px;
+  align-items:center;
+}
+.era-label{font-size:8px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-right:6px;}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(310px,1fr));
+  gap:1px;
+  background:var(--edge);
+  border-radius:var(--r);
+  overflow:hidden;
+}
+.card{
+  background:var(--card);
+  padding:22px 22px 18px;
+  position:relative;overflow:hidden;
+  cursor:pointer;
+  transition:background 0.2s;
+}
+.card:hover{background:var(--card2);}
+.card::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+}
+.lv1::before{background:#2855a8;}
+.lv2::before{background:#2068c0;}
+.lv3::before{background:var(--amber);}
+.lv4::before{background:#d07020;}
+.lv5::before{background:var(--red);}
+.lv6::before{background:var(--red2);box-shadow:0 0 16px rgba(255,68,68,0.4);}
+.card-yr-bg{
+  position:absolute;right:12px;top:8px;
+  font-family:'Anton',sans-serif;font-size:32px;
+  color:rgba(255,255,255,0.05);letter-spacing:1px;pointer-events:none;
+}
+.card-date{
+  font-size:8px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:7px;
+}
+.card-title{
+  font-family:'DM Serif Display',serif;
+  font-size:15px;color:var(--bright);
+  margin-bottom:8px;padding-right:52px;line-height:1.3;
+}
+.card-desc{
+  font-size:11px;color:var(--muted2);line-height:1.7;
+  font-family:'DM Serif Display',serif;font-style:italic;
+}
+.card-foot{
+  margin-top:13px;
+  display:flex;align-items:center;gap:8px;
+}
+.card-tension{font-size:8px;letter-spacing:2px;text-transform:uppercase;}
+.card-side{
+  font-size:7px;letter-spacing:2px;padding:2px 7px;border-radius:1px;
+  text-transform:uppercase;
+}
+.t-mild{color:#4a9eff;}
+.t-mod{color:#00c9ff;}
+.t-high{color:#ffab40;}
+.t-crit{color:#ff7043;}
+.t-nuke{color:var(--red2);}
+
+/* ─── FOOTER ─── */
+footer{
+  padding:18px 72px;
+  border-top:1px solid var(--edge);
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);
+}
+
+/* ─── LOAD ANIMATION ─── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.header-inner{animation:fadeUp 0.7s ease both;}
+.toolbar{animation:fadeUp 0.7s 0.1s ease both;}
+.viz-section{animation:fadeUp 0.7s 0.2s ease both;}
+.events-wrap{animation:fadeUp 0.7s 0.3s ease both;}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ HEADER -->
+<header>
+  <div class="header-glow"></div>
+  <div class="header-inner">
+    <div class="header-top">
+      <div>
+        <div class="classified-badge">Declassified · Historical Record · 1947–1991</div>
+        <h1>
+          <span class="word-cold">Cold</span>
+          <span class="word-war">War</span>
+          <span class="word-tensions">Tensions</span>
+        </h1>
+      </div>
+      <div class="header-right">
+        <div class="stat-block"><div class="stat-num">44</div><div class="stat-label">Years of Conflict</div></div>
+        <div class="stat-block"><div class="stat-num">104</div><div class="stat-label">Key Events Mapped</div></div>
+        <div class="stat-block"><div class="stat-num">10.0</div><div class="stat-label">Peak Tension — Oct 1962</div></div>
+      </div>
+    </div>
+    <hr class="divider-h">
+    <div class="meta-row">
+      <div class="leg"><div class="leg-dash" style="background:#2d6fd4;"></div>United States</div>
+      <div class="leg"><div class="leg-dash" style="background:#d93030;"></div>Soviet Union</div>
+      <div class="leg"><div class="leg-dash" style="background:var(--amber2);height:3px;"></div>Tension Index</div>
+      <div class="leg-sep"></div>
+      <div class="leg"><div class="leg-pip" style="background:var(--red2);box-shadow:0 0 6px var(--red2);"></div>Critical Event</div>
+      <div class="leg"><div class="leg-pip" style="background:#4a9eff;"></div>Diplomatic</div>
+      <div class="leg-sep"></div>
+      <div class="leg" style="color:var(--muted);font-size:8px;">Scroll to zoom · Drag to pan · Click event to focus</div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════ TOOLBAR -->
+<div class="toolbar">
+  <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+    <div class="tbar-group">
+      <span class="tbar-label">Zoom</span>
+      <button class="btn active" id="bFull">Full Era</button>
+      <button class="btn" id="bIn">+ In</button>
+      <button class="btn" id="bOut">− Out</button>
+      <button class="btn" id="bReset">Reset</button>
+    </div>
+    <div class="tbar-sep"></div>
+    <div class="tbar-group">
+      <span class="tbar-label">Filter</span>
+      <button class="btn active" id="fAll">All</button>
+      <button class="btn" id="fUS">US Only</button>
+      <button class="btn" id="fUSSR">USSR Only</button>
+      <button class="btn" id="fCrit">Critical</button>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+    <div class="zoom-readout" id="zoomReadout">1947 – 1991 · 45 years</div>
+    <div class="hint"><span class="hint-icon">⊕</span>scroll·drag·pinch to navigate</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ TOOLBAR ROW 2 -->
+<div class="toolbar2">
+  <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+    <div class="tbar-group">
+      <span class="tbar-label">Chapter</span>
+      <button class="btn" id="chAll">All</button>
+      <button class="btn" id="ch1"><span class="ch-tag" style="background:#78b4ff;"></span>Ch.1 Origins 1941–58</button>
+      <button class="btn" id="ch11"><span class="ch-tag" style="background:#78b4ff;opacity:0.6;"></span>1.1 Early Tensions</button>
+      <button class="btn" id="ch12"><span class="ch-tag" style="background:#78b4ff;opacity:0.6;"></span>1.2 Development</button>
+      <button class="btn" id="ch13"><span class="ch-tag" style="background:#78b4ff;opacity:0.6;"></span>1.3 Intensifies</button>
+    </div>
+    <div class="tbar-sep"></div>
+    <div class="tbar-group">
+      <button class="btn" id="ch2"><span class="ch-tag" style="background:#ffa03c;"></span>Ch.2 Crises 1958–70</button>
+      <button class="btn" id="ch21"><span class="ch-tag" style="background:#ffa03c;opacity:0.6;"></span>2.1 Berlin</button>
+      <button class="btn" id="ch22"><span class="ch-tag" style="background:#ffa03c;opacity:0.6;"></span>2.2 Cuba</button>
+      <button class="btn" id="ch23"><span class="ch-tag" style="background:#ffa03c;opacity:0.6;"></span>2.3 Czechoslovakia</button>
+    </div>
+    <div class="tbar-sep"></div>
+    <div class="tbar-group">
+      <button class="btn" id="ch3"><span class="ch-tag" style="background:#50d28c;"></span>Ch.3 End 1970–91</button>
+      <button class="btn" id="ch31"><span class="ch-tag" style="background:#50d28c;opacity:0.6;"></span>3.1 Détente</button>
+      <button class="btn" id="ch32"><span class="ch-tag" style="background:#50d28c;opacity:0.6;"></span>3.2 Flashpoints</button>
+      <button class="btn" id="ch33"><span class="ch-tag" style="background:#50d28c;opacity:0.6;"></span>3.3 Collapse</button>
+    </div>
+  </div>
+  <div class="range-group">
+    <span class="tbar-label">Range</span>
+    <input class="range-input" id="rangeFrom" type="number" min="1941" max="1991" placeholder="1947">
+    <span class="range-sep">→</span>
+    <input class="range-input" id="rangeTo" type="number" min="1941" max="1991" placeholder="1991">
+    <button class="range-go" id="rangeGo">Go</button>
+    <button class="btn" id="rangeClear" style="font-size:9px;padding:5px 8px;">✕</button>
+  </div>
+</div>
+<div class="viz-section">
+  <div class="chart-shell" id="chartShell">
+    <div class="chart-corner tl"></div><div class="chart-corner tr"></div>
+    <div class="chart-corner bl"></div><div class="chart-corner br"></div>
+    <div class="chart-badge" id="chartBadge">Overview</div>
+    <canvas id="mainChart"></canvas>
+  </div>
+  <div class="axis-strip"><canvas id="axisCanvas"></canvas></div>
+  <div class="nav-wrap">
+    <div class="nav-label-row">
+      <span class="nav-label">Timeline Navigator</span>
+      <span class="nav-label" id="navHint">Drag window · Click to jump</span>
+    </div>
+    <div class="nav-shell" id="navShell">
+      <canvas id="navChart"></canvas>
+      <div class="nav-win" id="navWin"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ EVENTS -->
+<div class="events-wrap">
+  <div class="events-head">
+    <div>
+      <div class="events-title">Key Events</div>
+    </div>
+    <div class="events-meta" id="evCount"></div>
+  </div>
+  <div class="era-filters">
+    <span class="era-label">Era:</span>
+    <button class="btn active" data-era="all">All</button>
+    <button class="btn" data-era="1947-1952">Early Cold War</button>
+    <button class="btn" data-era="1953-1962">Escalation</button>
+    <button class="btn" data-era="1963-1968">Crisis Mgmt</button>
+    <button class="btn" data-era="1969-1978">Détente</button>
+    <button class="btn" data-era="1979-1984">New Cold War</button>
+    <button class="btn" data-era="1985-1991">Endgame</button>
+  </div>
+  <div class="grid" id="evGrid"></div>
+</div>
+
+<footer>
+  <span>Cold War 1947–1991 · Geopolitical Tension Analysis</span>
+  <span>Tension: 0 = Coexistence → 10 = Nuclear Brinkmanship</span>
+</footer>
+
+<!-- ═══════════════════════════════════════════ TOOLTIP -->
+<div id="tooltip">
+  <div class="tt-header">
+    <div class="tt-date" id="ttDate"></div>
+    <div class="tt-title" id="ttTitle"></div>
+  </div>
+  <div class="tt-body">
+    <div class="tt-desc" id="ttDesc"></div>
+  </div>
+  <div class="tt-footer">
+    <div class="tt-bar-wrap"><div class="tt-bar" id="ttBar"></div></div>
+    <div class="tt-score" id="ttScore"></div>
+    <div class="tt-side-tag" id="ttSide"></div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════
+// DATA
+// ══════════════════════════════════════════════════════
+const EVENTS=[
+{y:1947,m:3,d:12,t:5.0,label:"Truman Doctrine",desc:"Truman declares US will contain Soviet expansion. Greece & Turkey receive $400M. Cold War containment framework formally established before Congress.",lv:2,side:"US"},
+{y:1947,m:6,d:5,t:4.5,label:"Marshall Plan Announced",desc:"Marshall proposes massive economic aid to rebuild Europe. USSR refuses and pressures Eastern Bloc to reject it. The economic iron curtain deepens.",lv:2,side:"US"},
+{y:1947,m:9,d:18,t:5.2,label:"CIA Created / Cominform Founded",desc:"USSR founds Cominform to coordinate communist parties. US creates the CIA under the National Security Act. Both superpowers build covert intelligence infrastructure.",lv:2,side:"Both"},
+{y:1948,m:2,d:25,t:6.5,label:"Communist Coup — Czechoslovakia",desc:"Soviet-backed communists seize power in Prague. Democratic government ousted. Shocks Western Europe and accelerates NATO negotiations.",lv:3,side:"USSR"},
+{y:1948,m:6,d:24,t:7.5,label:"Berlin Blockade",desc:"Stalin blockades West Berlin — 2 million civilians cut off. A massive US airlift lasting 323 days delivers 2.3M tons of supplies. First major Cold War confrontation.",lv:4,side:"USSR"},
+{y:1949,m:4,d:4,t:7.0,label:"NATO Founded",desc:"North Atlantic Treaty signed. 12 nations form a collective defense pact. Stalin views it as direct military encirclement of the USSR.",lv:3,side:"US"},
+{y:1949,m:8,d:29,t:8.5,label:"USSR Detonates First A-Bomb",desc:"Joe-1 detonated — USSR breaks the US nuclear monopoly 4 years ahead of Western estimates. Truman orders H-bomb development. The arms race begins.",lv:5,side:"USSR"},
+{y:1949,m:10,d:1,t:8.0,label:"China Falls to Communism",desc:"Mao's PLA wins civil war. Nationalist government flees to Taiwan. The communist bloc now encompasses 1/4 of humanity.",lv:5,side:"Both"},
+{y:1950,m:1,d:30,t:7.5,label:"NSC-68 — Nuclear Buildup Directive",desc:"Top-secret NSC-68 calls for quadrupling US defense spending. Becomes the blueprint for US Cold War strategy for decades.",lv:3,side:"US"},
+{y:1950,m:6,d:25,t:8.5,label:"Korean War Begins",desc:"North Korea invades South Korea with Soviet-supplied tanks. US leads UN forces. MacArthur pushes to the Yalu River. China sends 300,000 troops. Brutal stalemate.",lv:5,side:"Both"},
+{y:1952,m:11,d:1,t:7.5,label:"US Tests Hydrogen Bomb",desc:"Ivy Mike — first thermonuclear device, 10.4 megatons, 700× Hiroshima. Escalates destructive capacity to civilization-ending scale.",lv:4,side:"US"},
+{y:1953,m:3,d:5,t:7.5,label:"Stalin Dies",desc:"Stalin dies — power struggle erupts in the Kremlin. Beria arrested and shot. Khrushchev emerges. CIA considers exploiting the transition.",lv:4,side:"USSR"},
+{y:1953,m:7,d:27,t:6.0,label:"Korean Armistice Signed",desc:"Korean War ends exactly where it started, at the 38th Parallel. 36,500 Americans, 900,000 Chinese, millions of Koreans dead. A frozen conflict persisting today.",lv:3,side:"Both"},
+{y:1953,m:8,d:12,t:7.0,label:"USSR Tests H-Bomb",desc:"Joe-4 detonated — just 9 months after the US. Khrushchev now inherits an arsenal capable of reaching any American city.",lv:4,side:"USSR"},
+{y:1954,m:6,d:9,t:5.5,label:"Army-McCarthy Hearings",desc:"'Have you no sense of decency?' McCarthy censured by Senate in December. Domestic anti-communist hysteria begins to recede.",lv:2,side:"US"},
+{y:1954,m:8,d:19,t:5.8,label:"CIA Coups — Iran & Guatemala",desc:"CIA overthrows Mosaddegh in Iran (Op. Ajax) and Árbenz in Guatemala (PBSUCCESS). Covert Cold War expands into the developing world.",lv:3,side:"US"},
+{y:1955,m:5,d:14,t:5.0,label:"Warsaw Pact Founded",desc:"USSR and 7 Eastern Bloc states sign the Warsaw Pact — direct military counter to NATO. Europe formally divided into two armed blocs.",lv:2,side:"USSR"},
+{y:1955,m:7,d:18,t:4.5,label:"Geneva Summit — Spirit of Geneva",desc:"First superpower summit since Potsdam. Eisenhower proposes 'Open Skies' aerial inspection — USSR refuses. Brief optimism. Austria becomes neutral.",lv:2,side:"Both"},
+{y:1956,m:2,d:25,t:5.5,label:"Khrushchev's Secret Speech",desc:"Khrushchev denounces Stalin's crimes to the Communist Party congress. Shock waves through the Eastern Bloc. Signals possible liberalization.",lv:2,side:"USSR"},
+{y:1956,m:10,d:29,t:7.0,label:"Suez Crisis",desc:"UK, France & Israel invade Egypt. Both US and USSR demand withdrawal. Britain humiliated — the end of European imperial power.",lv:4,side:"Both"},
+{y:1956,m:11,d:4,t:7.5,label:"Hungarian Revolution Crushed",desc:"Khrushchev sends 1,000+ tanks into Budapest. 2,500 Hungarians killed. UN condemns the USSR. The West watches helplessly.",lv:4,side:"USSR"},
+{y:1957,m:10,d:4,t:6.5,label:"Sputnik — Space Race Begins",desc:"USSR launches Sputnik — the first satellite. The bleeping signal panics America. Proves USSR has ICBM capability to hit anywhere on Earth.",lv:3,side:"USSR"},
+{y:1957,m:11,d:3,t:6.8,label:"Sputnik 2 / Laika",desc:"Dog Laika orbits Earth. US scrambles to respond. Eisenhower creates NASA and DARPA. The Vanguard rocket explodes live on American television.",lv:3,side:"USSR"},
+{y:1958,m:11,d:27,t:6.5,label:"Berlin Ultimatum",desc:"Khrushchev demands Western powers vacate Berlin within 6 months. US refuses. Berlin becomes Cold War's most dangerous flashpoint.",lv:3,side:"USSR"},
+{y:1959,m:1,d:1,t:5.5,label:"Cuban Revolution — Castro Takes Power",desc:"Castro ousts Batista. US ambivalence shifts to hostility as Castro nationalizes American assets. USSR begins supplying arms to Cuba — 90 miles from Florida.",lv:3,side:"Both"},
+{y:1959,m:7,d:24,t:5.0,label:"Kitchen Debate",desc:"Nixon and Khrushchev debate capitalism vs. communism in a model American kitchen in Moscow. A televised ideological clash for the ages.",lv:2,side:"Both"},
+{y:1960,m:5,d:1,t:7.5,label:"U-2 Spy Plane Shot Down",desc:"Gary Powers shot down over Sverdlovsk. Eisenhower caught lying. Paris Summit collapses. The Cold War thaw freezes solid.",lv:4,side:"US"},
+{y:1960,m:11,d:8,t:7.0,label:"Kennedy Elected",desc:"JFK wins on closing the 'missile gap' (later found to heavily favor the US). Khrushchev initially believes he can exploit Kennedy's inexperience.",lv:3,side:"US"},
+{y:1961,m:4,d:17,t:7.5,label:"Bay of Pigs — Catastrophic Failure",desc:"CIA-trained Cuban exiles invade — Kennedy refuses air cover. 1,200 captured. Kennedy is humiliated. Khrushchev resolves to place missiles in Cuba.",lv:4,side:"US"},
+{y:1961,m:6,d:4,t:7.5,label:"Vienna Summit — Khrushchev Bullies JFK",desc:"Khrushchev intimidates the 44-year-old Kennedy, renews the Berlin ultimatum. JFK reportedly shaken: 'It's going to be a cold winter.'",lv:4,side:"USSR"},
+{y:1961,m:8,d:13,t:8.0,label:"Berlin Wall Constructed",desc:"East Germany erects the Wall overnight. Barbed wire first, then concrete. Families divided. Kennedy calls it 'a wall of shame' but accepts it over war.",lv:5,side:"USSR"},
+{y:1961,m:10,d:30,t:8.0,label:"Tsar Bomba — 50 Megatons",desc:"The most powerful explosion in human history. Shockwave circles Earth three times. Windows shattered 900km away. Pure nuclear intimidation.",lv:5,side:"USSR"},
+{y:1962,m:3,d:1,t:8.0,label:"US Nuclear Superiority Revealed",desc:"US official reveals a massive lead in warheads — destroying Khrushchev's claims of parity. Humiliated, he secretly resolves to place missiles in Cuba.",lv:4,side:"US"},
+{y:1962,m:10,d:16,t:10.0,label:"Cuban Missile Crisis — DEFCON 2",desc:"October 16–28: U-2 photos reveal Soviet missiles in Cuba. DEFCON 2. 13 days of secret negotiations. Soviet ships turn back. Missiles withdrawn. The world's closest approach to nuclear annihilation.",lv:6,side:"Both"},
+{y:1963,m:6,d:20,t:6.5,label:"Moscow Hotline Established",desc:"Direct teletype link between the White House and Kremlin installed after the missile crisis. First use during the 1967 Six-Day War.",lv:3,side:"Both"},
+{y:1963,m:8,d:5,t:6.0,label:"Partial Nuclear Test Ban Treaty",desc:"US, USSR & UK ban atmospheric, underwater and space nuclear tests. First arms control agreement of the Cold War.",lv:3,side:"Both"},
+{y:1963,m:11,d:22,t:7.0,label:"Kennedy Assassinated",desc:"JFK shot in Dallas. Soviets briefly feared it was a prelude to a US attack and went on alert. A Cold War leadership vacuum at a critical moment.",lv:4,side:"US"},
+{y:1964,m:8,d:7,t:6.8,label:"Gulf of Tonkin — Vietnam Escalates",desc:"Alleged North Vietnamese attacks on US destroyers. Congress issues the Gulf of Tonkin Resolution — a blank check for war. Later found manipulated.",lv:3,side:"US"},
+{y:1964,m:10,d:14,t:6.5,label:"Khrushchev Ousted",desc:"Khrushchev removed by the Politburo — humiliated over Cuba, agricultural failures, erratic behavior. Brezhnev takes power. A harder line returns.",lv:3,side:"USSR"},
+{y:1964,m:10,d:16,t:7.0,label:"China Detonates Atomic Bomb",desc:"PRC tests its first nuclear device. Sino-Soviet split now encompasses nuclear dimension. A three-way Cold War dynamic emerges.",lv:4,side:"Both"},
+{y:1965,m:3,d:8,t:6.8,label:"Vietnam War Escalation",desc:"Operation Rolling Thunder. Marines land at Da Nang. 184,000 US troops by year's end; 536,000 by 1968. USSR and China supply North Vietnam.",lv:4,side:"US"},
+{y:1967,m:6,d:5,t:6.5,label:"Six-Day War",desc:"Israel defeats Egypt, Syria, Jordan in 6 days. US backs Israel; USSR backs the Arabs. The Moscow-Washington hotline is used for the first time.",lv:3,side:"Both"},
+{y:1968,m:1,d:30,t:6.5,label:"Tet Offensive — Vietnam Turning Point",desc:"North Vietnam launches massive coordinated attacks. US Embassy in Saigon breached. A military setback absorbed, but American public support shatters.",lv:3,side:"Both"},
+{y:1968,m:8,d:20,t:7.5,label:"Prague Spring Crushed",desc:"Dubček's reforms crushed by 500,000 Warsaw Pact troops. The Brezhnev Doctrine: USSR can intervene anywhere socialism is threatened.",lv:4,side:"USSR"},
+{y:1969,m:7,d:20,t:5.5,label:"Moon Landing — Apollo 11",desc:"Neil Armstrong walks on the Moon. Decisive US victory in the Space Race. The Soviet lunar program is secretly abandoned.",lv:2,side:"US"},
+{y:1969,m:3,d:2,t:5.8,label:"Sino-Soviet Border Clashes",desc:"Nuclear powers exchanging fire along the Ussuri River. Soviets discuss a pre-emptive strike on China. Nixon sees a strategic opportunity.",lv:3,side:"USSR"},
+{y:1970,m:5,d:4,t:6.2,label:"Kent State / Cambodia Invasion",desc:"US expands the war into Cambodia. National Guard kills 4 students at Kent State. 450 colleges shut down. US Cold War credibility erodes.",lv:3,side:"US"},
+{y:1971,m:7,d:9,t:5.0,label:"Ping-Pong Diplomacy / China Opening",desc:"Kissinger secretly visits Beijing. Nixon prepares his historic opening. Triangular diplomacy — playing China against the USSR — begins.",lv:2,side:"US"},
+{y:1972,m:2,d:21,t:4.8,label:"Nixon Visits China",desc:"Nixon lands in Beijing — the week that changed the world. Meets Mao. Fundamentally realigns global Cold War balance. USSR is deeply alarmed.",lv:2,side:"US"},
+{y:1972,m:5,d:26,t:4.5,label:"SALT I / ABM Treaty — Détente Peak",desc:"Nixon visits Moscow. SALT I caps nuclear delivery vehicles. ABM Treaty limits missile defense. Détente at its zenith.",lv:2,side:"Both"},
+{y:1973,m:10,d:6,t:6.5,label:"Yom Kippur War / DEFCON 3",desc:"Egypt and Syria attack Israel. When the USSR threatens direct intervention, the US raises alert to DEFCON 3 — the closest nuclear standoff since Cuba.",lv:3,side:"Both"},
+{y:1973,m:9,d:11,t:5.2,label:"Chile Coup — CIA Backs Pinochet",desc:"CIA spends $8M destabilizing Chile. Allende killed. Pinochet's brutal dictatorship installed. The Latin American left radicalizes.",lv:3,side:"US"},
+{y:1974,m:8,d:9,t:5.5,label:"Nixon Resigns — Watergate",desc:"Nixon resigns — crippled US foreign policy. Kissinger maintains Détente but loses political backing. CIA operations curtailed by Congress.",lv:3,side:"US"},
+{y:1975,m:4,d:30,t:5.0,label:"Saigon Falls",desc:"North Vietnamese tanks roll into Saigon. Chaotic US evacuation from the embassy roof. 58,000 Americans died. Communism appears to be advancing globally.",lv:2,side:"Both"},
+{y:1975,m:8,d:1,t:4.5,label:"Helsinki Accords",desc:"35 nations recognize post-WWII borders — a Soviet gain. But human rights clauses (Basket III) become a lever for dissidents. Double-edged for the USSR.",lv:2,side:"Both"},
+{y:1975,m:11,d:11,t:5.5,label:"Angola Proxy War",desc:"USSR and Cuba back MPLA; US backs UNITA. 36,000 Cuban troops secure the Soviet-aligned government. Africa becomes a Cold War battleground.",lv:3,side:"Both"},
+{y:1977,m:10,d:14,t:5.8,label:"SS-20 Missiles Deployed",desc:"USSR deploys SS-20 intermediate-range missiles targeting Western Europe. European security balance shifts dramatically. NATO responds with Pershing deployments.",lv:3,side:"Both"},
+{y:1978,m:9,d:17,t:6.0,label:"Camp David Accords",desc:"Egypt signs peace with Israel — pulling the Arab world's largest military out of Soviet orbit. A massive strategic loss for the USSR.",lv:3,side:"Both"},
+{y:1979,m:2,d:1,t:6.5,label:"Iranian Revolution / Hostage Crisis",desc:"Shah falls; Khomeini takes power. 52 US diplomats held hostage for 444 days. Radical Islamism threatens both superpowers.",lv:3,side:"Both"},
+{y:1979,m:6,d:18,t:7.0,label:"SALT II Signed but Shelved",desc:"Carter and Brezhnev sign SALT II — then the Soviet invasion of Afghanistan kills ratification. Arms control framework collapses.",lv:3,side:"Both"},
+{y:1979,m:12,d:25,t:8.5,label:"Soviet Invasion of Afghanistan",desc:"Christmas 1979 — 100,000 Soviet troops invade. Brezhnev miscalculates badly. The Carter Doctrine declared. CIA arms the mujahideen. Détente is officially dead.",lv:5,side:"USSR"},
+{y:1980,m:11,d:4,t:8.0,label:"Reagan Elected — Second Cold War",desc:"Reagan wins in a landslide. 'Evil Empire.' Defense spending doubles. B-1 bomber, MX missiles, 600-ship navy. Military Keynesianism reshapes the US economy.",lv:5,side:"US"},
+{y:1980,m:9,d:22,t:7.5,label:"Iran-Iraq War Begins",desc:"Saddam invades Iran. Both superpowers maneuver. US eventually tilts toward Iraq. USSR sells weapons to both sides. The Persian Gulf is militarized.",lv:4,side:"Both"},
+{y:1981,m:12,d:13,t:7.8,label:"Martial Law in Poland — Solidarity",desc:"Jaruzelski declares martial law, crushing Solidarity under Soviet pressure. Reagan imposes economic sanctions. Pope John Paul II rallies Catholics worldwide.",lv:4,side:"Both"},
+{y:1982,m:11,d:10,t:7.5,label:"Brezhnev Dies / Andropov Takes Power",desc:"Brezhnev dies. Andropov (former KGB chief) succeeds him. Brief hopes for reform — but gravely ill from day one; dies 15 months later.",lv:4,side:"USSR"},
+{y:1983,m:3,d:8,t:8.0,label:"Reagan's 'Evil Empire' Speech",desc:"Reagan calls the USSR 'evil empire' and 'focus of evil in the modern world.' Soviets furious. Ideological war now alongside the geopolitical one.",lv:5,side:"US"},
+{y:1983,m:3,d:23,t:8.2,label:"SDI 'Star Wars' Announced",desc:"Reagan proposes a space-based missile defense shield. If it works, it nullifies the Soviet deterrent. Moscow cannot match it economically. Deep alarm.",lv:5,side:"US"},
+{y:1983,m:9,d:1,t:8.5,label:"KAL 007 Shot Down — 269 Dead",desc:"Soviet Su-15 shoots down Korean Air Lines 007 — 269 dead including a US congressman. Reagan: 'a crime against humanity.'",lv:5,side:"USSR"},
+{y:1983,m:11,d:2,t:9.0,label:"ABLE ARCHER 83 — Near Nuclear War",desc:"NATO exercise so realistic Soviets believe an attack is imminent. Soviet nuclear forces go on full alert. British double-agent Gordievsky warns London. The most dangerous moment since 1962.",lv:6,side:"Both"},
+{y:1984,m:2,d:13,t:8.0,label:"Chernenko Takes Power",desc:"Andropov dies. Chernenko — 72, emphysemic — takes power. The third Soviet leader in three years. Gerontocracy at its most dysfunctional.",lv:4,side:"USSR"},
+{y:1984,m:5,d:8,t:8.5,label:"USSR Boycotts LA Olympics",desc:"Soviet defector Gordievsky reveals the Kremlin genuinely feared a US first strike. RYAN operation monitors the US for attack signs around the clock.",lv:5,side:"USSR"},
+{y:1985,m:3,d:11,t:7.5,label:"Gorbachev Takes Power",desc:"Mikhail Gorbachev, 54, becomes General Secretary. Youngest Soviet leader since Stalin. Unilateral nuclear test moratorium declared. Reagan cautiously intrigued.",lv:4,side:"USSR"},
+{y:1985,m:11,d:19,t:6.5,label:"Geneva Summit — Reagan & Gorbachev",desc:"First Reagan-Gorbachev summit. No agreements reached but personal chemistry ignites. Famous fireside chat. Seeds of the end of the Cold War are planted.",lv:3,side:"Both"},
+{y:1986,m:4,d:26,t:6.0,label:"Chernobyl Disaster",desc:"Reactor 4 explodes — worst nuclear accident in history. Gorbachev sees it as proof the Soviet system cannot be incrementally reformed. Glasnost dramatically accelerates.",lv:3,side:"USSR"},
+{y:1986,m:10,d:11,t:5.0,label:"Reykjavik Summit — Almost Zero Nukes",desc:"Reagan and Gorbachev come within an inch of eliminating all nuclear weapons. Reagan refuses to limit SDI. Gorbachev walks out. But the INF framework is now established.",lv:2,side:"Both"},
+{y:1987,m:12,d:8,t:4.5,label:"INF Treaty Signed",desc:"Reagan and Gorbachev eliminate all intermediate-range nuclear missiles — 2,692 weapons. First treaty to actually reduce nuclear arsenals. 'Trust, but verify.'",lv:2,side:"Both"},
+{y:1988,m:5,d:15,t:4.0,label:"USSR Withdraws from Afghanistan",desc:"Soviet troops begin withdrawal. 15,000 Soviets and 1–2 million Afghans dead. Gorbachev calls it 'the bleeding wound.' The mujahideen are victorious.",lv:2,side:"USSR"},
+{y:1988,m:5,d:29,t:4.5,label:"Reagan in Moscow — 'Evil Empire' Recanted",desc:"Reagan walks through Red Square. Asked about 'evil empire': 'That was another time, another era.' The transformation from adversaries to partners is visible.",lv:2,side:"Both"},
+{y:1988,m:12,d:7,t:3.8,label:"Gorbachev UN Speech — Cold War Ending",desc:"Gorbachev announces a unilateral cut of 500,000 troops, withdrawal from Eastern Europe. Repudiates the Brezhnev Doctrine. Western leaders are stunned.",lv:1,side:"USSR"},
+{y:1989,m:6,d:4,t:4.0,label:"Tiananmen Square — China Diverges",desc:"Chinese army crushes pro-democracy protesters. Gorbachev had just visited Beijing — the contrast between Soviet reform and Chinese repression is stark.",lv:2,side:"Both"},
+{y:1989,m:9,d:1,t:3.5,label:"Eastern Europe Revolutions",desc:"Poland: Solidarity wins free elections. Hungary opens its border. Czechoslovakia, Bulgaria, Romania: all hold revolutions. The USSR does not intervene.",lv:1,side:"Both"},
+{y:1989,m:11,d:9,t:3.0,label:"Berlin Wall Falls",desc:"East Germany announces citizens may cross freely. Crowds dismantle the Wall with hammers. Families reunited after 28 years. The defining image of Cold War's end.",lv:1,side:"Both"},
+{y:1989,m:12,d:3,t:2.8,label:"Malta Summit — Cold War 'Ends'",desc:"Bush and Gorbachev meet aboard ships off Malta. Bush declares the Cold War over. Both sides agree to cooperate. The world holds its breath.",lv:1,side:"Both"},
+{y:1990,m:10,d:3,t:2.5,label:"German Reunification",desc:"Two Germanys reunite. Gorbachev accepts NATO membership of unified Germany — a stunning concession. Cold War architecture crumbles visibly.",lv:1,side:"Both"},
+{y:1991,m:7,d:1,t:2.5,label:"Warsaw Pact Dissolves",desc:"The Soviet military alliance that defined European security for 36 years ceases to exist. Former members immediately apply to join NATO.",lv:1,side:"USSR"},
+{y:1991,m:7,d:31,t:2.0,label:"START I Treaty Signed",desc:"Bush and Gorbachev sign START I — reducing strategic warheads by 30%. The most comprehensive arms reduction agreement in history.",lv:1,side:"Both"},
+{y:1991,m:8,d:19,t:3.5,label:"Failed Coup Against Gorbachev",desc:"KGB and military hardliners attempt a coup. Yeltsin stands on a tank at the Russian parliament. Three days — the coup collapses. The Soviet collapse accelerates.",lv:2,side:"USSR"},
+{y:1991,m:12,d:25,t:1.5,label:"Soviet Union Dissolves",desc:"Gorbachev resigns. The Soviet flag is lowered over the Kremlin for the last time. 15 new nations emerge. 44 years. 70,000+ nuclear warheads. The Cold War ends.",lv:1,side:"USSR"},
+];
+
+const MO_S=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const MO_L=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const ERAS=[
+  {s:1947,e:1952,label:'Early Cold War'},
+  {s:1953,e:1962,label:'Escalation'},
+  {s:1963,e:1968,label:'Crisis Management'},
+  {s:1969,e:1978,label:'Détente'},
+  {s:1979,e:1984,label:'New Cold War'},
+  {s:1985,e:1991,label:'Endgame'},
+];
+
+EVENTS.forEach(ev=>{
+  ev.dv=ev.y+(ev.m-1)/12+(ev.d-1)/365;
+  ev.dateStr=`${MO_L[ev.m-1]} ${ev.d}, ${ev.y}`;
+  ev.dateShort=`${MO_S[ev.m-1]} ${ev.d}, ${ev.y}`;
+});
+EVENTS.sort((a,b)=>a.dv-b.dv);
+
+// ══════════════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════════════
+const MIN_Y=1947,MAX_Y=1991;
+let vs=MIN_Y,ve=MAX_Y+1;
+let fSide='all';
+let eraFilter='all';
+let activeChapter='all';
+
+// ══════════════════════════════════════════════════════
+// HELPERS
+// ══════════════════════════════════════════════════════
+function tCol(t){
+  if(t<=2.5)return'#4a9eff';
+  if(t<=4.5)return'#00c9ff';
+  if(t<=6.5)return'#ffab40';
+  if(t<=8.0)return'#ff7043';
+  return'#ff1744';
+}
+function tClass(t){
+  if(t<=3)return't-mild';
+  if(t<=5)return't-mod';
+  if(t<=7)return't-high';
+  if(t<=8.5)return't-crit';
+  return't-nuke';
+}
+function tLabel(t){
+  if(t<=3)return'Mild';
+  if(t<=5)return'Moderate';
+  if(t<=7)return'High';
+  if(t<=8.5)return'Critical';
+  return'Nuclear Brinkmanship';
+}
+function sCol(s){
+  if(s==='US')return'#2d6fd4';
+  if(s==='USSR')return'#d93030';
+  return'#c8922a';
+}
+function visEvs(){
+  const span=ve-vs;
+  return EVENTS.filter(ev=>{
+    if(ev.dv<vs||ev.dv>ve)return false;
+    if(fSide==='US'&&ev.side!=='US'&&ev.side!=='Both')return false;
+    if(fSide==='USSR'&&ev.side!=='USSR'&&ev.side!=='Both')return false;
+    if(fSide==='critical'&&ev.lv<5)return false;
+    if(span>18&&ev.lv<3)return false;
+    if(span>8&&span<=18&&ev.lv<2)return false;
+    return true;
+  });
+}
+function allEvs(){
+  return EVENTS.filter(ev=>{
+    if(fSide==='US'&&ev.side!=='US'&&ev.side!=='Both')return false;
+    if(fSide==='USSR'&&ev.side!=='USSR'&&ev.side!=='Both')return false;
+    if(fSide==='critical'&&ev.lv<5)return false;
+    return true;
+  });
+}
+
+// ══════════════════════════════════════════════════════
+// CANVAS INIT
+// ══════════════════════════════════════════════════════
+const mainC=document.getElementById('mainChart');
+const mCtx=mainC.getContext('2d');
+const navC=document.getElementById('navChart');
+const nCtx=navC.getContext('2d');
+const axC=document.getElementById('axisCanvas');
+const aCtx=axC.getContext('2d');
+
+const PAD={t:48,r:72,b:52,l:62};
+
+function initCanvas(c,w,h){
+  const dpr=devicePixelRatio||1;
+  c.width=Math.round(w*dpr);
+  c.height=Math.round(h*dpr);
+  c.style.width=w+'px';
+  c.style.height=h+'px';
+  const ctx=c.getContext('2d');
+  ctx.setTransform(1,0,0,1,0,0); // reset any accumulated scale
+  ctx.scale(dpr,dpr);
+}
+
+// ══════════════════════════════════════════════════════
+// DRAW MAIN
+// ══════════════════════════════════════════════════════
+function drawMain(){
+  const shell=document.getElementById('chartShell');
+  const W=shell.clientWidth;
+  const H=Math.max(440,Math.min(620,W*0.44));
+  initCanvas(mainC,W,H);
+  const ctx=mCtx;
+  ctx.clearRect(0,0,W,H);
+  const cW=W-PAD.l-PAD.r, cH=H-PAD.t-PAD.b;
+  const span=ve-vs;
+
+  function xp(v){return PAD.l+(v-vs)/span*cW;}
+  function yp(t){return PAD.t+(1-t/10)*cH;}
+
+  // ─ clip everything to the plot area so panning never bleeds outside
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(PAD.l, PAD.t, cW, cH);
+  ctx.clip();
+
+  // ─ era background stripes
+  ERAS.forEach((er,i)=>{
+    const x1=Math.max(PAD.l,xp(er.s));
+    const x2=Math.min(PAD.l+cW,xp(er.e+1));
+    if(x2<=PAD.l||x1>=PAD.l+cW)return;
+    ctx.fillStyle=i%2===0?'rgba(255,255,255,0.016)':'rgba(0,0,0,0)';
+    ctx.fillRect(x1,PAD.t,x2-x1,cH);
+    if(x2-x1>50){
+      ctx.save();
+      ctx.font='500 8px "DM Mono"';
+      ctx.fillStyle='rgba(255,255,255,0.07)';
+      ctx.textAlign='center';
+      ctx.fillText(er.label.toUpperCase(),Math.max(x1+30,Math.min(x2-30,(x1+x2)/2)),PAD.t+16);
+      ctx.restore();
+    }
+  });
+
+  // ─ active chapter highlight band
+  if(activeChapter!=='all'&&CHAPTERS[activeChapter]){
+    const ch=CHAPTERS[activeChapter];
+    const x1=Math.max(PAD.l,xp(ch.s));
+    const x2=Math.min(PAD.l+cW,xp(ch.e));
+    if(x2>x1){
+      ctx.fillStyle=ch.col.replace('#','')
+        ? (()=>{const r=parseInt(ch.col.slice(1,3),16),g=parseInt(ch.col.slice(3,5),16),b=parseInt(ch.col.slice(5,7),16);return `rgba(${r},${g},${b},0.06)`;})()
+        : 'rgba(255,255,255,0.05)';
+      ctx.fillRect(x1,PAD.t,x2-x1,cH);
+      // left border accent
+      ctx.fillStyle=ch.col.replace('#','')
+        ? (()=>{const r=parseInt(ch.col.slice(1,3),16),g=parseInt(ch.col.slice(3,5),16),b=parseInt(ch.col.slice(5,7),16);return `rgba(${r},${g},${b},0.5)`;})()
+        : 'rgba(255,255,255,0.3)';
+      ctx.fillRect(x1,PAD.t,2,cH);
+      // label at top
+      ctx.save();
+      ctx.font='500 8px "DM Mono"';
+      ctx.fillStyle=ch.col;
+      ctx.textAlign='left';
+      ctx.globalAlpha=0.7;
+      ctx.fillText(ch.label.toUpperCase(), Math.min(x1+8, PAD.l+cW-100), PAD.t+12);
+      ctx.restore();
+    }
+  }
+
+  // ─ horizontal tension band fills
+  [[0,3,'rgba(74,158,255,0.025)'],[3,6,'rgba(255,171,64,0.025)'],[6,8.5,'rgba(255,112,67,0.04)'],[8.5,10,'rgba(255,23,68,0.055)']].forEach(([lo,hi,col])=>{
+    ctx.fillStyle=col;
+    ctx.fillRect(PAD.l,yp(hi),cW,yp(lo)-yp(hi));
+  });
+
+  // ─ horizontal grid lines (0–10 integers)
+  ctx.save();
+  for(let i=0;i<=10;i++){
+    const y=yp(i);
+    ctx.strokeStyle=i===0?'rgba(255,255,255,0.15)':i%2===0?'rgba(255,255,255,0.07)':'rgba(255,255,255,0.025)';
+    ctx.lineWidth=i===0?1.5:1;
+    ctx.setLineDash([]);
+    ctx.beginPath();ctx.moveTo(PAD.l,y);ctx.lineTo(PAD.l+cW,y);ctx.stroke();
+
+    ctx.fillStyle=i%2===0?'rgba(255,255,255,0.35)':'rgba(255,255,255,0.15)';
+    ctx.font=`${i%2===0?'500':'400'} ${i%2===0?10:8}px "DM Mono"`;
+    ctx.textAlign='right';
+    ctx.fillText(i,PAD.l-10,y+3.5);
+  }
+  ctx.restore();
+
+  // ─ vertical year lines
+  const yStep=span>30?5:span>15?2:span>7?1:0.5;
+  ctx.save();
+  for(let v=Math.ceil(vs/yStep)*yStep;v<=ve;v+=yStep){
+    const x=xp(v);
+    if(x<PAD.l||x>PAD.l+cW)continue;
+    const isWholeYear=Number.isInteger(v);
+    const isFive=v%5===0;
+    ctx.strokeStyle=isFive?'rgba(255,255,255,0.08)':isWholeYear?'rgba(255,255,255,0.04)':'rgba(255,255,255,0.02)';
+    ctx.lineWidth=1;
+    ctx.setLineDash(isFive?[]:[2,4]);
+    ctx.beginPath();ctx.moveTo(x,PAD.t);ctx.lineTo(x,PAD.t+cH);ctx.stroke();
+  }
+  ctx.setLineDash([]);
+  ctx.restore();
+
+  // ─ data line — use ALL events for line (not filtered by view), so line always reaches edges
+  const evs=visEvs();
+  // For the line path we use the full sorted event list to ensure continuity at borders
+  const lineEvs=(()=>{
+    const all=EVENTS.filter(ev=>{
+      if(fSide==='US'&&ev.side!=='US'&&ev.side!=='Both')return false;
+      if(fSide==='USSR'&&ev.side!=='USSR'&&ev.side!=='Both')return false;
+      if(fSide==='critical'&&ev.lv<5)return false;
+      return true;
+    });
+    // include one event before and one after the view window for edge continuity
+    const inView=all.filter(ev=>ev.dv>=vs&&ev.dv<=ve);
+    const before=all.filter(ev=>ev.dv<vs);
+    const after=all.filter(ev=>ev.dv>ve);
+    const pts=[...( before.length?[before[before.length-1]]:[]),...inView,...(after.length?[after[0]]:[])];
+    return pts;
+  })();
+
+  if(lineEvs.length>1){
+    // area fill
+    ctx.save();
+    const grd=ctx.createLinearGradient(0,PAD.t,0,PAD.t+cH);
+    grd.addColorStop(0,'rgba(255,23,68,0.2)');
+    grd.addColorStop(0.4,'rgba(255,171,64,0.1)');
+    grd.addColorStop(1,'rgba(74,158,255,0.02)');
+    ctx.beginPath();
+    ctx.moveTo(xp(lineEvs[0].dv),PAD.t+cH);
+    lineEvs.forEach(ev=>ctx.lineTo(xp(ev.dv),yp(ev.t)));
+    ctx.lineTo(xp(lineEvs[lineEvs.length-1].dv),PAD.t+cH);
+    ctx.closePath();
+    ctx.fillStyle=grd;ctx.fill();
+    ctx.restore();
+
+    // line glow pass — use shadow instead of filter (filter causes glitch)
+    ctx.save();
+    ctx.beginPath();
+    lineEvs.forEach((ev,i)=>{
+      i===0?ctx.moveTo(xp(ev.dv),yp(ev.t)):ctx.lineTo(xp(ev.dv),yp(ev.t));
+    });
+    ctx.strokeStyle='rgba(200,146,42,0.35)';
+    ctx.lineWidth=6;ctx.lineJoin='round';
+    ctx.shadowColor='rgba(200,146,42,0.6)';
+    ctx.shadowBlur=12;
+    ctx.stroke();
+    ctx.restore();
+
+    // main line
+    ctx.save();
+    ctx.beginPath();
+    lineEvs.forEach((ev,i)=>{
+      i===0?ctx.moveTo(xp(ev.dv),yp(ev.t)):ctx.lineTo(xp(ev.dv),yp(ev.t));
+    });
+    ctx.strokeStyle='rgba(200,146,42,0.95)';
+    ctx.lineWidth=2;ctx.lineJoin='round';
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  // ─ event dots — efficient: no shadowBlur per dot (causes jank)
+  evs.forEach(ev=>{
+    const x=xp(ev.dv),y=yp(ev.t);
+    const col=tCol(ev.t);
+    const r=ev.t>=9.5?8:ev.t>=8?6.5:ev.lv>=5?5.5:ev.lv>=3?4:3;
+
+    // outer glow via radial gradient
+    if(ev.lv>=3){
+      const grd2=ctx.createRadialGradient(x,y,r*0.5,x,y,r*3.5);
+      grd2.addColorStop(0,col+'55');
+      grd2.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.beginPath();ctx.arc(x,y,r*3.5,0,Math.PI*2);
+      ctx.fillStyle=grd2;ctx.fill();
+    }
+
+    // dot fill
+    ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);
+    ctx.fillStyle=col;ctx.fill();
+
+    // ring on critical events
+    if(ev.lv>=5){
+      ctx.beginPath();ctx.arc(x,y,r+3,0,Math.PI*2);
+      ctx.strokeStyle='rgba(255,255,255,0.25)';
+      ctx.lineWidth=1;ctx.stroke();
+    }
+
+    // dark outline
+    ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);
+    ctx.strokeStyle='rgba(8,8,16,0.7)';ctx.lineWidth=1.5;ctx.stroke();
+  });
+
+  // ─ callout labels when zoomed in — full multi-pass collision resolution
+  if(span<=10){
+    ctx.save();
+    ctx.font='500 8px "DM Mono"';
+    const LH=11, VGAP=3, HPAD=6, BGPAD=2;
+
+    // Build items sorted left→right
+    const items=evs.filter(ev=>ev.lv>=4).map(ev=>{
+      const x=xp(ev.dv), y=yp(ev.t);
+      const txt=ev.label.length>30?ev.label.slice(0,30)+'…':ev.label;
+      const tw=ctx.measureText(txt).width+HPAD*2;
+      // ideal label top = above the dot with some room
+      const idealTop=Math.min(y-22, PAD.t+cH-LH-2);
+      return {x, dotY:y, ly:Math.max(PAD.t+2, idealTop), tw, txt, col:tCol(ev.t)};
+    }).sort((a,b)=>a.x-b.x);
+
+    if(items.length>0){
+      // Multi-pass repulsion — run until stable or max iterations
+      const MAX_ITER=60;
+      for(let iter=0;iter<MAX_ITER;iter++){
+        let moved=false;
+        for(let i=0;i<items.length;i++){
+          for(let j=i+1;j<items.length;j++){
+            const a=items[i], b=items[j];
+            // Check if label rects overlap: horizontally close AND vertically close
+            const hOverlap = b.x < a.x+a.tw+2 && b.x+b.tw > a.x-2;
+            const vOverlap = Math.abs(a.ly-b.ly) < LH+VGAP;
+            if(hOverlap && vOverlap){
+              // push them apart vertically — a goes up, b goes down
+              const mid=(a.ly+b.ly)/2;
+              const newA=mid-(LH+VGAP)/2;
+              const newB=mid+(LH+VGAP)/2;
+              a.ly=Math.max(PAD.t+2, newA);
+              b.ly=Math.min(PAD.t+cH-LH-2, newB);
+              moved=true;
+            }
+          }
+        }
+        if(!moved)break;
+      }
+
+      // Draw each label
+      items.forEach(s=>{
+        // tick line from dot to label
+        ctx.setLineDash([2,4]);
+        ctx.strokeStyle='rgba(255,255,255,0.15)';
+        ctx.lineWidth=1;
+        ctx.beginPath();
+        ctx.moveTo(s.x, s.dotY-5);
+        ctx.lineTo(s.x, s.ly+LH);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // dark background
+        ctx.fillStyle='rgba(6,6,14,0.85)';
+        const bx=s.x-BGPAD, by=s.ly-BGPAD;
+        const bw=s.tw+BGPAD*2, bh=LH+BGPAD*2;
+        ctx.fillRect(bx, by, bw, bh);
+
+        // colored left accent on bg
+        ctx.fillStyle=s.col;
+        ctx.fillRect(bx, by, 2, bh);
+
+        // text
+        ctx.fillStyle=s.col;
+        ctx.fillText(s.txt, s.x+HPAD/2, s.ly+LH-2);
+      });
+    }
+    ctx.restore();
+  }
+
+  // ─ restore clip (end of clipped region)
+  ctx.restore();
+
+  // ─ axis frame — closed box, drawn outside clip so it covers any bleed
+  ctx.strokeStyle='rgba(255,255,255,0.12)';ctx.lineWidth=1;ctx.setLineDash([]);
+  ctx.beginPath();
+  ctx.moveTo(PAD.l,PAD.t);ctx.lineTo(PAD.l,PAD.t+cH);
+  ctx.lineTo(PAD.l+cW,PAD.t+cH);ctx.lineTo(PAD.l+cW,PAD.t);
+  ctx.closePath();ctx.stroke();
+
+  // ─ band labels in right margin
+  const bandLabels=[{v:1.5,txt:'MILD'},{v:4.0,txt:'MODERATE'},{v:7.0,txt:'HIGH'},{v:9.2,txt:'CRITICAL'}];
+  ctx.save();
+  ctx.font='400 7.5px "DM Mono"';
+  ctx.textAlign='left';
+  bandLabels.forEach(b=>{
+    ctx.fillStyle='rgba(255,255,255,0.13)';
+    ctx.fillText(b.txt, PAD.l+cW+9, yp(b.v)+3);
+  });
+  ctx.restore();
+
+  // ─ Y axis label
+  ctx.save();
+  ctx.translate(16,PAD.t+cH/2);ctx.rotate(-Math.PI/2);
+  ctx.fillStyle='rgba(255,255,255,0.15)';
+  ctx.font='400 8px "DM Mono"';ctx.textAlign='center';
+  ctx.fillText('TENSION  0 → 10',0,0);
+  ctx.restore();
+
+  // badge
+  const span2=ve-vs;
+  document.getElementById('chartBadge').textContent=
+    span2<5?`ZOOMED ×${(45/span2).toFixed(1)}`:span2<15?'DETAIL VIEW':'OVERVIEW';
+
+  drawAxis(W);
+  updateNavWin();
+  updateReadout();
+}
+
+// ══════════════════════════════════════════════════════
+// DATE AXIS
+// ══════════════════════════════════════════════════════
+function drawAxis(W){
+  const H=36;
+  initCanvas(axC,W,H);
+  const ctx=aCtx;
+  ctx.clearRect(0,0,W,H);
+  const cW=W-PAD.l-PAD.r;
+  const span=ve-vs;
+  function xp(v){return PAD.l+(v-vs)/span*cW;}
+
+  ctx.fillStyle='rgba(255,255,255,0.22)';
+  ctx.font='400 9px "DM Mono"';
+  ctx.textAlign='center';
+
+  if(span<=2.5){
+    // show months + days
+    for(let mo=0;mo<120;mo++){
+      const baseY=Math.floor(vs);
+      const yr=baseY+Math.floor(mo/12);
+      const m=mo%12;
+      const xv=yr+m/12;
+      if(xv<vs||xv>ve)continue;
+      const x=xp(xv);
+      ctx.strokeStyle='rgba(255,255,255,0.1)';ctx.lineWidth=1;ctx.setLineDash([]);
+      ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,8);ctx.stroke();
+      ctx.fillText(MO_S[m]+' '+yr,x,24);
+    }
+  } else {
+    const step=span>30?5:span>15?2:span>7?1:0.5;
+    for(let v=Math.ceil(vs/step)*step;v<=ve+0.01;v+=step){
+      const x=xp(v);
+      if(x<PAD.l-2||x>PAD.l+cW+2)continue;
+      const isFive=v%5===0&&step<=1;
+      ctx.strokeStyle=isFive?'rgba(255,255,255,0.15)':'rgba(255,255,255,0.08)';
+      ctx.lineWidth=1;ctx.setLineDash([]);
+      ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,isFive?12:8);ctx.stroke();
+      ctx.fillStyle=isFive?'rgba(255,255,255,0.3)':'rgba(255,255,255,0.18)';
+      ctx.font=isFive?'500 9px "DM Mono"':'400 8px "DM Mono"';
+      ctx.fillText(Number.isInteger(v)?v:MO_S[Math.round((v%1)*12)]+' '+(Math.floor(v)),x,26);
+    }
+  }
+}
+
+// ══════════════════════════════════════════════════════
+// NAV CHART
+// ══════════════════════════════════════════════════════
+function drawNav(){
+  const ns=document.getElementById('navShell');
+  const W=ns.clientWidth,H=56;
+  initCanvas(navC,W,H);
+  const ctx=nCtx;
+  ctx.clearRect(0,0,W,H);
+  const span=MAX_Y+1-MIN_Y;
+  function xp(v){return(v-MIN_Y)/span*W;}
+  function yp(t){return 4+(1-t/10)*(H-8);}
+
+  ERAS.forEach((er,i)=>{
+    ctx.fillStyle=i%2===0?'rgba(255,255,255,0.012)':'rgba(0,0,0,0)';
+    ctx.fillRect(xp(er.s),0,xp(er.e+1)-xp(er.s),H);
+  });
+
+  const evs=allEvs();
+  if(evs.length>1){
+    ctx.beginPath();
+    ctx.moveTo(xp(evs[0].dv),H);
+    evs.forEach(ev=>ctx.lineTo(xp(ev.dv),yp(ev.t)));
+    ctx.lineTo(xp(evs[evs.length-1].dv),H);
+    ctx.closePath();
+    const g=ctx.createLinearGradient(0,0,0,H);
+    g.addColorStop(0,'rgba(200,146,42,0.4)');
+    g.addColorStop(1,'rgba(200,146,42,0.03)');
+    ctx.fillStyle=g;ctx.fill();
+    ctx.beginPath();
+    evs.forEach((ev,i)=>i===0?ctx.moveTo(xp(ev.dv),yp(ev.t)):ctx.lineTo(xp(ev.dv),yp(ev.t)));
+    ctx.strokeStyle='rgba(200,146,42,0.7)';ctx.lineWidth=1.5;ctx.lineJoin='round';ctx.stroke();
+  }
+
+  ctx.fillStyle='rgba(255,255,255,0.2)';
+  ctx.font='400 7px "DM Mono"';ctx.textAlign='center';
+  for(let yr=MIN_Y;yr<=MAX_Y;yr+=5){
+    const x=xp(yr);
+    ctx.fillText(yr,x,H-2);
+    ctx.strokeStyle='rgba(255,255,255,0.08)';ctx.lineWidth=1;ctx.setLineDash([]);
+    ctx.beginPath();ctx.moveTo(x,H-10);ctx.lineTo(x,H-14);ctx.stroke();
+  }
+}
+
+function updateNavWin(){
+  const ns=document.getElementById('navShell');
+  const nw=document.getElementById('navWin');
+  const W=ns.clientWidth;
+  const span=MAX_Y+1-MIN_Y;
+  nw.style.left=((vs-MIN_Y)/span*W)+'px';
+  nw.style.width=(Math.max(6,(ve-vs)/span*W))+'px';
+}
+function updateReadout(){
+  const span=ve-vs;
+  const s=Math.floor(vs),e=Math.ceil(ve)-1;
+  document.getElementById('zoomReadout').textContent=`${s} – ${e}  ·  ${Math.round(span)} yr${Math.round(span)!==1?'s':''}`;
+}
+
+// ══════════════════════════════════════════════════════
+// TOOLTIP
+// ══════════════════════════════════════════════════════
+const tip=document.getElementById('tooltip');
+let hovered=null;
+
+mainC.addEventListener('mousemove',e=>{
+  const rect=mainC.getBoundingClientRect();
+  const mx=e.clientX-rect.left,my=e.clientY-rect.top;
+  const W=rect.width,H=rect.height;
+  const cW=W-PAD.l-PAD.r,cH=H-PAD.t-PAD.b;
+  const span=ve-vs;
+  function xp(v){return PAD.l+(v-vs)/span*cW;}
+  function yp(t){return PAD.t+(1-t/10)*cH;}
+
+  const evs=visEvs();
+  let best=null,bestD=Infinity;
+  evs.forEach(ev=>{
+    const dx=mx-xp(ev.dv),dy=my-yp(ev.t);
+    const d=Math.sqrt(dx*dx+dy*dy);
+    if(d<bestD){bestD=d;best=ev;}
+  });
+
+  if(best&&bestD<26){
+    if(hovered===best){positionTip(e.clientX,e.clientY);return;}
+    hovered=best;
+    document.getElementById('ttDate').textContent=best.dateStr;
+    document.getElementById('ttTitle').textContent=best.label;
+    document.getElementById('ttDesc').textContent=best.desc;
+    const bar=document.getElementById('ttBar');
+    bar.style.width=(best.t*10)+'%';
+    bar.style.background=tCol(best.t);
+    document.getElementById('ttScore').textContent=`${best.t.toFixed(1)}/10  ·  ${tLabel(best.t)}`;
+    document.getElementById('ttScore').style.color=tCol(best.t);
+    const stag=document.getElementById('ttSide');
+    stag.textContent=best.side;
+    stag.style.background=sCol(best.side)+'22';
+    stag.style.color=sCol(best.side);
+    tip.style.display='block';
+    positionTip(e.clientX,e.clientY);
+    mainC.style.cursor='pointer';
+  } else {
+    if(hovered){hovered=null;tip.style.display='none';}
+    mainC.style.cursor='crosshair';
+  }
+});
+mainC.addEventListener('mouseleave',()=>{hovered=null;tip.style.display='none';});
+
+function positionTip(cx,cy){
+  tip.style.left=(cx+18)+'px';tip.style.top=(cy-24)+'px';
+  requestAnimationFrame(()=>{
+    const r=tip.getBoundingClientRect();
+    if(r.right>window.innerWidth-10)tip.style.left=(cx-r.width-18)+'px';
+    if(r.bottom>window.innerHeight-10)tip.style.top=(cy-r.height-8)+'px';
+  });
+}
+
+// ══════════════════════════════════════════════════════
+// ZOOM + PAN
+// ══════════════════════════════════════════════════════
+mainC.addEventListener('wheel',e=>{
+  e.preventDefault();
+  const rect=mainC.getBoundingClientRect();
+  const frac=(e.clientX-rect.left-PAD.l)/(rect.width-PAD.l-PAD.r);
+  const pivot=vs+frac*(ve-vs);
+  applyZoom(e.deltaY>0?1.18:0.85,pivot);
+},{passive:false});
+
+let isDrag=false,dragX=0,dragVS=0,dragVE=0;
+mainC.addEventListener('mousedown',e=>{isDrag=true;dragX=e.clientX;dragVS=vs;dragVE=ve;mainC.style.cursor='grabbing';});
+window.addEventListener('mousemove',e=>{
+  if(!isDrag)return;
+  const rect=mainC.getBoundingClientRect();
+  const dx=e.clientX-dragX;
+  const sh=-dx/(rect.width-PAD.l-PAD.r)*(dragVE-dragVS);
+  applyPan(sh,dragVS,dragVE);
+});
+window.addEventListener('mouseup',()=>{isDrag=false;if(!hovered)mainC.style.cursor='crosshair';});
+
+// touch
+let td=0,tm=0;
+mainC.addEventListener('touchstart',e=>{
+  if(e.touches.length===2){
+    const dx=e.touches[0].clientX-e.touches[1].clientX;
+    const dy=e.touches[0].clientY-e.touches[1].clientY;
+    td=Math.sqrt(dx*dx+dy*dy);
+    tm=(e.touches[0].clientX+e.touches[1].clientX)/2;
+  }else if(e.touches.length===1){isDrag=true;dragX=e.touches[0].clientX;dragVS=vs;dragVE=ve;}
+},{passive:true});
+mainC.addEventListener('touchmove',e=>{
+  if(e.touches.length===2){
+    e.preventDefault();
+    const dx=e.touches[0].clientX-e.touches[1].clientX;
+    const dy=e.touches[0].clientY-e.touches[1].clientY;
+    const nd=Math.sqrt(dx*dx+dy*dy);
+    const rect=mainC.getBoundingClientRect();
+    const nm=(e.touches[0].clientX+e.touches[1].clientX)/2;
+    const frac=(nm-rect.left-PAD.l)/(rect.width-PAD.l-PAD.r);
+    const pivot=vs+frac*(ve-vs);
+    applyZoom(td/nd,pivot);
+    td=nd;tm=nm;
+  }else if(e.touches.length===1&&isDrag){
+    const dx=e.touches[0].clientX-dragX;
+    const rect=mainC.getBoundingClientRect();
+    const sh=-dx/(rect.width-PAD.l-PAD.r)*(dragVE-dragVS);
+    applyPan(sh,dragVS,dragVE);
+  }
+},{passive:false});
+mainC.addEventListener('touchend',()=>{isDrag=false;},{passive:true});
+
+let rafPending=false;
+function schedDraw(){
+  if(rafPending)return;
+  rafPending=true;
+  requestAnimationFrame(()=>{
+    rafPending=false;
+    drawMain();
+    buildCards();
+    syncRangeInputs();
+  });
+}
+
+function applyZoom(factor,pivot){
+  let s=pivot-(pivot-vs)*factor;
+  let e=pivot+(ve-pivot)*factor;
+  const MIN_SPAN=0.4,MAX_SPAN=MAX_Y+1-MIN_Y;
+  if(e-s<MIN_SPAN){const c=(s+e)/2;s=c-MIN_SPAN/2;e=c+MIN_SPAN/2;}
+  if(e-s>MAX_SPAN){s=MIN_Y;e=MAX_Y+1;}
+  s=Math.max(MIN_Y-0.3,s);e=Math.min(MAX_Y+1.3,e);
+  vs=s;ve=e;
+  schedDraw();
+}
+function applyPan(sh,bS,bE){
+  let s=bS+sh,e=bE+sh;
+  const span=e-s;
+  if(s<MIN_Y-0.3){s=MIN_Y-0.3;e=s+span;}
+  if(e>MAX_Y+1.3){e=MAX_Y+1.3;s=e-span;}
+  vs=s;ve=e;
+  schedDraw();
+}
+
+// Buttons
+function setBtn(id,group){group.forEach(b=>document.getElementById(b).classList.remove('active'));document.getElementById(id).classList.add('active');}
+document.getElementById('bFull').onclick=()=>{vs=MIN_Y;ve=MAX_Y+1;drawMain();buildCards();setBtn('bFull',['bFull','bIn','bOut','bReset']);};
+document.getElementById('bIn').onclick=()=>{const c=(vs+ve)/2;applyZoom(0.55,c);setBtn('bIn',['bFull','bIn','bOut','bReset']);};
+document.getElementById('bOut').onclick=()=>{const c=(vs+ve)/2;applyZoom(1.6,c);setBtn('bOut',['bFull','bIn','bOut','bReset']);};
+document.getElementById('bReset').onclick=()=>{vs=MIN_Y;ve=MAX_Y+1;drawMain();buildCards();setBtn('bFull',['bFull','bIn','bOut','bReset']);};
+
+function setFilter(id,side,btnGroup){
+  fSide=side;
+  btnGroup.forEach(b=>{
+    const el=document.getElementById(b);
+    el.classList.remove('active','active-red','active-blue');
+  });
+  const el=document.getElementById(id);
+  if(side==='US')el.classList.add('active-blue');
+  else if(side==='USSR')el.classList.add('active-red');
+  else el.classList.add('active');
+  drawMain();buildCards();
+}
+const fg=['fAll','fUS','fUSSR','fCrit'];
+document.getElementById('fAll').onclick=()=>setFilter('fAll','all',fg);
+document.getElementById('fUS').onclick=()=>setFilter('fUS','US',fg);
+document.getElementById('fUSSR').onclick=()=>setFilter('fUSSR','USSR',fg);
+document.getElementById('fCrit').onclick=()=>setFilter('fCrit','critical',fg);
+
+// ══════════════════════════════════════════════════════
+// NAV DRAG
+// ══════════════════════════════════════════════════════
+const navWin=document.getElementById('navWin');
+let navDrag=false,navDragX=0,navDragVS=0;
+
+navWin.addEventListener('mousedown',e=>{navDrag=true;navDragX=e.clientX;navDragVS=vs;e.preventDefault();e.stopPropagation();});
+window.addEventListener('mousemove',e=>{
+  if(!navDrag)return;
+  const ns=document.getElementById('navShell');
+  const W=ns.clientWidth;
+  const sh=(e.clientX-navDragX)/W*(MAX_Y+1-MIN_Y);
+  const span=ve-vs;
+  let s=navDragVS+sh,en=s+span;
+  if(s<MIN_Y){s=MIN_Y;en=s+span;}
+  if(en>MAX_Y+1){en=MAX_Y+1;s=en-span;}
+  vs=s;ve=en;schedDraw();
+});
+window.addEventListener('mouseup',()=>{navDrag=false;});
+
+document.getElementById('navShell').addEventListener('click',e=>{
+  if(navDrag)return;
+  const ns=e.currentTarget;
+  const W=ns.clientWidth;
+  const frac=(e.clientX-ns.getBoundingClientRect().left)/W;
+  const span=ve-vs;
+  let s=MIN_Y+frac*(MAX_Y+1-MIN_Y)-span/2;
+  let en=s+span;
+  if(s<MIN_Y){s=MIN_Y;en=s+span;}
+  if(en>MAX_Y+1){en=MAX_Y+1;s=en-span;}
+  vs=s;ve=en;schedDraw();
+});
+
+// ══════════════════════════════════════════════════════
+// EVENT CARDS
+// ══════════════════════════════════════════════════════
+function buildCards(){
+  const grid=document.getElementById('evGrid');
+  grid.innerHTML='';
+
+  // figure out year range from eraFilter or chapter
+  let rangeS=null, rangeE=null;
+  if(eraFilter!=='all'){
+    const parts=eraFilter.split('-').map(Number);
+    rangeS=parts[0]; rangeE=parts[1]||parts[0]+10;
+  }
+
+  let list=EVENTS.filter(ev=>{
+    if(fSide==='US'&&ev.side!=='US'&&ev.side!=='Both')return false;
+    if(fSide==='USSR'&&ev.side!=='USSR'&&ev.side!=='Both')return false;
+    if(fSide==='critical'&&ev.lv<5)return false;
+    if(rangeS!==null && (ev.y<rangeS||ev.y>rangeE))return false;
+    return ev.lv>=2;
+  });
+
+  document.getElementById('evCount').textContent=`${list.length} events`;
+
+  list.forEach(ev=>{
+    const card=document.createElement('div');
+    card.className=`card lv${ev.lv}`;
+    const sc=sCol(ev.side);
+    card.innerHTML=`
+      <div class="card-yr-bg">${ev.y}</div>
+      <div class="card-date">${ev.dateShort}</div>
+      <div class="card-title">${ev.label}</div>
+      <div class="card-desc">${ev.desc}</div>
+      <div class="card-foot">
+        <span class="card-tension ${tClass(ev.t)}">${tLabel(ev.t)}  ·  ${ev.t}/10</span>
+        <span class="card-side" style="background:${sc}22;color:${sc}">${ev.side}</span>
+      </div>
+    `;
+    card.addEventListener('click',()=>{
+      vs=Math.max(MIN_Y,ev.y-2.5);
+      ve=Math.min(MAX_Y+1,ev.y+3.5);
+      drawMain();buildCards();
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+    grid.appendChild(card);
+  });
+}
+
+// Era filter buttons
+document.querySelectorAll('[data-era]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('[data-era]').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    eraFilter=btn.dataset.era;
+    buildCards();
+  });
+});
+
+// ══════════════════════════════════════════════════════
+// CHAPTERS
+// ══════════════════════════════════════════════════════
+const CHAPTERS={
+  ch1:  {s:1941, e:1958, label:'Ch.1 Origins 1941–58',       col:'#78b4ff'},
+  ch11: {s:1941, e:1947, label:'1.1 Early Tensions',          col:'#78b4ff'},
+  ch12: {s:1947, e:1953, label:'1.2 Development of Cold War', col:'#78b4ff'},
+  ch13: {s:1953, e:1958, label:'1.3 Cold War Intensifies',    col:'#78b4ff'},
+  ch2:  {s:1958, e:1970, label:'Ch.2 Crises 1958–70',         col:'#ffa03c'},
+  ch21: {s:1958, e:1963, label:'2.1 Berlin 1958–63',          col:'#ffa03c'},
+  ch22: {s:1962, e:1963, label:'2.2 Cuban Missile Crisis',    col:'#ffa03c'},
+  ch23: {s:1968, e:1969, label:'2.3 Czechoslovakia 1968–69',  col:'#ffa03c'},
+  ch3:  {s:1970, e:1991, label:'Ch.3 End 1970–91',            col:'#50d28c'},
+  ch31: {s:1969, e:1979, label:'3.1 Attempts to Reduce Tension', col:'#50d28c'},
+  ch32: {s:1979, e:1984, label:'3.2 Flashpoints 1979–84',     col:'#50d28c'},
+  ch33: {s:1985, e:1991, label:'3.3 Collapse of Soviet Control', col:'#50d28c'},
+};
+
+function applyChapter(id){
+  activeChapter=id;
+  // clear all chapter button states
+  ['chAll','ch1','ch11','ch12','ch13','ch2','ch21','ch22','ch23','ch3','ch31','ch32','ch33'].forEach(b=>{
+    const el=document.getElementById(b);
+    el.classList.remove('active','active-ch1','active-ch2','active-ch3');
+  });
+  if(id==='all'){
+    document.getElementById('chAll').classList.add('active');
+    vs=MIN_Y; ve=MAX_Y+1;
+    eraFilter='all';
+    // reset era buttons
+    document.querySelectorAll('[data-era]').forEach(b=>b.classList.remove('active'));
+    document.querySelector('[data-era="all"]').classList.add('active');
+  } else {
+    const ch=CHAPTERS[id];
+    const cls=id.startsWith('ch1')?'active-ch1':id.startsWith('ch2')?'active-ch2':'active-ch3';
+    document.getElementById(id).classList.add(cls);
+    // zoom chart to chapter range
+    vs=Math.max(MIN_Y-0.3, ch.s-0.5);
+    ve=Math.min(MAX_Y+1.3, ch.e+0.5);
+    // also sync era filter to chapter range
+    eraFilter=`${ch.s}-${ch.e}`;
+    document.querySelectorAll('[data-era]').forEach(b=>b.classList.remove('active'));
+  }
+  // clear range inputs
+  document.getElementById('rangeFrom').value='';
+  document.getElementById('rangeTo').value='';
+  schedDraw();
+  buildCards();
+}
+
+['chAll','ch1','ch11','ch12','ch13','ch2','ch21','ch22','ch23','ch3','ch31','ch32','ch33'].forEach(id=>{
+  document.getElementById(id).addEventListener('click',()=>applyChapter(id==='chAll'?'all':id));
+});
+
+// ── DATE RANGE INPUTS ──
+function applyRange(){
+  const from=parseInt(document.getElementById('rangeFrom').value)||null;
+  const to=parseInt(document.getElementById('rangeTo').value)||null;
+  if(!from&&!to)return;
+  const s=Math.max(MIN_Y-0.3,(from||MIN_Y)-0.5);
+  const e=Math.min(MAX_Y+1.3,(to||MAX_Y)+1.5);
+  if(s>=e)return;
+  vs=s; ve=e;
+  // set era filter to match range for cards
+  eraFilter=`${from||MIN_Y}-${to||MAX_Y}`;
+  // clear chapter selection
+  activeChapter='all';
+  ['chAll','ch1','ch11','ch12','ch13','ch2','ch21','ch22','ch23','ch3','ch31','ch32','ch33'].forEach(b=>{
+    document.getElementById(b).classList.remove('active','active-ch1','active-ch2','active-ch3');
+  });
+  document.getElementById('chAll').classList.add('active');
+  schedDraw(); buildCards();
+}
+document.getElementById('rangeGo').addEventListener('click',applyRange);
+document.getElementById('rangeFrom').addEventListener('keydown',e=>{ if(e.key==='Enter')applyRange(); });
+document.getElementById('rangeTo').addEventListener('keydown',e=>{ if(e.key==='Enter')applyRange(); });
+document.getElementById('rangeClear').addEventListener('click',()=>{
+  document.getElementById('rangeFrom').value='';
+  document.getElementById('rangeTo').value='';
+  applyChapter('all');
+});
+
+// sync range inputs when user pans/zooms manually
+function syncRangeInputs(){
+  document.getElementById('rangeFrom').value=Math.round(Math.max(MIN_Y,vs));
+  document.getElementById('rangeTo').value=Math.round(Math.min(MAX_Y,ve));
+}
+
+// ══════════════════════════════════════════════════════
+// INIT + RESIZE
+// ══════════════════════════════════════════════════════
+function init(){
+  drawNav();
+  drawMain();
+  buildCards();
+}
+const ro=new ResizeObserver(()=>{drawNav();drawMain();});
+ro.observe(document.getElementById('chartShell'));
+ro.observe(document.getElementById('navShell'));
+init();
+</script>
+</body>
+</html>
