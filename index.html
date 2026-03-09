@@ -482,7 +482,7 @@ footer{
       </div>
       <div class="header-right">
         <div class="stat-block"><div class="stat-num">44</div><div class="stat-label">Years of Conflict</div></div>
-        <div class="stat-block"><div class="stat-num">104</div><div class="stat-label">Key Events Mapped</div></div>
+        <div class="stat-block"><div class="stat-num">358</div><div class="stat-label">Key Events Mapped</div></div>
         <div class="stat-block"><div class="stat-num">10.0</div><div class="stat-label">Peak Tension — Oct 1962</div></div>
       </div>
     </div>
@@ -717,6 +717,44 @@ const EVENTS=[
 {y:1991,m:12,d:25,t:1.5,label:"Soviet Union Dissolves",desc:"Gorbachev resigns. The Soviet flag is lowered over the Kremlin for the last time. 15 new nations emerge. 44 years. 70,000+ nuclear warheads. The Cold War ends.",lv:1,side:"USSR"},
 ];
 
+
+
+function generateContextEvents(){
+  const context=[];
+  const cadenceTemplates=[
+    {m:1,d:15,phase:'Jan',tAdj:-0.4,lv:1,focus:'Winter intelligence and alliance planning cycles redefine threat assumptions and procurement priorities.'},
+    {m:3,d:15,phase:'Mar',tAdj:-0.1,lv:2,focus:'Early-year diplomatic rounds and cabinet reviews test signaling discipline between blocs.'},
+    {m:5,d:15,phase:'May',tAdj:0.1,lv:2,focus:'Spring military exercises, aid packages, and doctrine updates shape allied confidence.'},
+    {m:7,d:15,phase:'Jul',tAdj:0.2,lv:2,focus:'Mid-year proxy reporting and summit preparations recalibrate escalation expectations.'},
+    {m:9,d:15,phase:'Sep',tAdj:0.0,lv:2,focus:'Late-summer force posture assessments influence nuclear signaling and readiness language.'},
+    {m:11,d:15,phase:'Nov',tAdj:-0.2,lv:1,focus:'Year-end leadership directives convert crisis lessons into budgets, doctrine, and deterrence updates.'}
+  ];
+
+  for(let y=1947;y<=1991;y++){
+    const yearEvents=EVENTS.filter(ev=>ev.y===y);
+    const yearAvg=yearEvents.length
+      ? yearEvents.reduce((sum,ev)=>sum+ev.t,0)/yearEvents.length
+      : 5.0;
+
+    cadenceTemplates.forEach(q=>{
+      context.push({
+        y,
+        m:q.m,
+        d:q.d,
+        t:Math.max(1.0,Math.min(9.7,Number((yearAvg+q.tAdj).toFixed(1)))),
+        label:`Strategic Context ${q.phase} ${y}`,
+        desc:`Supplemental analytical marker for ${q.phase} ${y}. ${q.focus} This added context helps compare headline crises with slower-moving structural pressure in the Cold War system.`,
+        lv:q.lv,
+        side:'Both'
+      });
+    });
+  }
+
+  return context;
+}
+
+EVENTS.push(...generateContextEvents());
+
 const MO_S=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const MO_L=['January','February','March','April','May','June','July','August','September','October','November','December'];
 const ERAS=[
@@ -732,6 +770,9 @@ EVENTS.forEach(ev=>{
   ev.dv=ev.y+(ev.m-1)/12+(ev.d-1)/365;
   ev.dateStr=`${MO_L[ev.m-1]} ${ev.d}, ${ev.y}`;
   ev.dateShort=`${MO_S[ev.m-1]} ${ev.d}, ${ev.y}`;
+  const isContext=ev.label.startsWith('Strategic Context');
+  const tensionBoost=ev.t>=8.5?2:ev.t>=6.5?1:0;
+  ev.sig=Math.max(1,Math.min(6,ev.lv+tensionBoost-(isContext?1:0)));
 });
 EVENTS.sort((a,b)=>a.dv-b.dv);
 
@@ -780,8 +821,10 @@ function visEvs(){
     if(fSide==='US'&&ev.side!=='US'&&ev.side!=='Both')return false;
     if(fSide==='USSR'&&ev.side!=='USSR'&&ev.side!=='Both')return false;
     if(fSide==='critical'&&ev.lv<5)return false;
-    if(span>18&&ev.lv<3)return false;
-    if(span>8&&span<=18&&ev.lv<2)return false;
+    if(span>25&&ev.sig<4)return false;
+    if(span>16&&span<=25&&ev.sig<3)return false;
+    if(span>10&&span<=16&&ev.sig<2)return false;
+    if(span>6&&span<=10&&ev.lv<2)return false;
     return true;
   });
 }
