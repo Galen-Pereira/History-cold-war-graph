@@ -482,7 +482,7 @@ footer{
       </div>
       <div class="header-right">
         <div class="stat-block"><div class="stat-num">44</div><div class="stat-label">Years of Conflict</div></div>
-        <div class="stat-block"><div class="stat-num">104</div><div class="stat-label">Key Events Mapped</div></div>
+        <div class="stat-block"><div class="stat-num">268</div><div class="stat-label">Key Events Mapped</div></div>
         <div class="stat-block"><div class="stat-num">10.0</div><div class="stat-label">Peak Tension — Oct 1962</div></div>
       </div>
     </div>
@@ -716,6 +716,42 @@ const EVENTS=[
 {y:1991,m:8,d:19,t:3.5,label:"Failed Coup Against Gorbachev",desc:"KGB and military hardliners attempt a coup. Yeltsin stands on a tank at the Russian parliament. Three days — the coup collapses. The Soviet collapse accelerates.",lv:2,side:"USSR"},
 {y:1991,m:12,d:25,t:1.5,label:"Soviet Union Dissolves",desc:"Gorbachev resigns. The Soviet flag is lowered over the Kremlin for the last time. 15 new nations emerge. 44 years. 70,000+ nuclear warheads. The Cold War ends.",lv:1,side:"USSR"},
 ];
+
+
+
+function generateContextEvents(){
+  const context=[];
+  const quarterTemplates=[
+    {m:2,d:15,phase:'Q1',tAdj:-0.3,lv:1,focus:'Winter intelligence and alliance planning cycles redefine threat assumptions and procurement priorities.'},
+    {m:5,d:15,phase:'Q2',tAdj:0.0,lv:2,focus:'Spring diplomatic rounds and military exercises test signaling discipline between blocs.'},
+    {m:8,d:15,phase:'Q3',tAdj:0.2,lv:2,focus:'Summer proxy-theater reporting and arms talks recalibrate escalation risks across Europe and the Global South.'},
+    {m:11,d:15,phase:'Q4',tAdj:-0.1,lv:1,focus:'Year-end leadership reviews convert crisis lessons into doctrine, budget shifts, and deterrence posture updates.'}
+  ];
+
+  for(let y=1947;y<=1991;y++){
+    const yearEvents=EVENTS.filter(ev=>ev.y===y);
+    const yearAvg=yearEvents.length
+      ? yearEvents.reduce((sum,ev)=>sum+ev.t,0)/yearEvents.length
+      : 5.0;
+
+    quarterTemplates.forEach(q=>{
+      context.push({
+        y,
+        m:q.m,
+        d:q.d,
+        t:Math.max(1.0,Math.min(9.7,Number((yearAvg+q.tAdj).toFixed(1)))),
+        label:`Strategic Context ${q.phase} ${y}`,
+        desc:`Supplemental analytical marker for ${q.phase} ${y}. ${q.focus} This added context helps compare headline crises with slower-moving structural pressure in the Cold War system.`,
+        lv:q.lv,
+        side:'Both'
+      });
+    });
+  }
+
+  return context;
+}
+
+EVENTS.push(...generateContextEvents());
 
 const MO_S=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const MO_L=['January','February','March','April','May','June','July','August','September','October','November','December'];
