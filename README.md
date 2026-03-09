@@ -1,7 +1,7 @@
 # History-cold-war-graph
 # Cold War Tensions (1947–1991)
 
-An interactive, single-file historical visualization that maps key Cold War events and a custom tension index from **1947 to 1991**.
+An interactive, single-file historical visualization that maps **200+** Cold War events (headline crises plus quarterly context markers) and a custom tension index from **1947 to 1991**.
 
 ## Overview
 
@@ -37,6 +37,7 @@ This project is a standalone HTML app (no build tools required) that combines:
 - Tooltip on hover with date, description, score, and side
 - Event cards with tension classification
 - Click a card to auto-focus timeline around that event
+- Added quarterly strategic context markers to increase timeline granularity beyond headline events
 
 ## Tech Stack
 
