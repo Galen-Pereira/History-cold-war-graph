@@ -1,7 +1,7 @@
 # History-cold-war-graph
 # Cold War Tensions (1947–1991)
 
-An interactive, single-file historical visualization that maps key Cold War events and a custom tension index from **1947 to 1991**.
+An interactive, single-file historical visualization that maps **130 dated Cold War events** with a custom tension index from **1947 to 1991**.
 
 ## Overview
 
@@ -37,6 +37,8 @@ This project is a standalone HTML app (no build tools required) that combines:
 - Tooltip on hover with date, description, score, and side
 - Event cards with tension classification
 - Click a card to auto-focus timeline around that event
+- Event list now stays focused on dated historical events only (no synthetic context markers)
+- Significance-aware zoom filtering still prioritizes major events to reduce visual dot clutter
 
 ## Tech Stack
 
@@ -58,7 +60,9 @@ Events are defined in a single `EVENTS` array:
 - `lv`: event level/severity (`1` to `6`)
 - `side`: `US`, `USSR`, or `Both`
 
-Derived fields are added at runtime (`dv`, `dateStr`, `dateShort`) for plotting and UI display.
+Derived fields are added at runtime (`dv`, `dateStr`, `dateShort`, `sig`) for plotting and UI display.
+
+A companion source list is also included in `Edexcel GCSE (9-1) History Superpower Relations and the Cold -- Christopher Catherwood; Nigel Kelly -- 2016 -- Pearson Education,.md`.
 
 ## Run Locally
 
