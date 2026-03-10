@@ -1194,74 +1194,103 @@ function drawMain(){
     ctx.strokeStyle='rgba(8,8,16,0.7)';ctx.lineWidth=1.5;ctx.stroke();
   });
 
-  // ─ callout labels when zoomed in — full multi-pass collision resolution
-  if(span<=10){
-    ctx.save();
-    ctx.font='500 8px "DM Mono"';
-    const LH=11, VGAP=3, HPAD=6, BGPAD=2;
+  // ─ staggered stem labels — adapt count to zoom level
+  {
+    const FONT_SZ = 9;
+    const LH = FONT_SZ + 3;
+    const MIN_PX_GAP = 48; // minimum px between label centres before we cull
 
-    // Build items sorted left→right
-    const items=evs.filter(ev=>ev.lv>=4).map(ev=>{
-      const x=xp(ev.dv), y=yp(ev.t);
-      const txt=ev.label.length>30?ev.label.slice(0,30)+'…':ev.label;
-      const tw=ctx.measureText(txt).width+HPAD*2;
-      // ideal label top = above the dot with some room
-      const idealTop=Math.min(y-22, PAD.t+cH-LH-2);
-      return {x, dotY:y, ly:Math.max(PAD.t+2, idealTop), tw, txt, col:tCol(ev.t)};
-    }).sort((a,b)=>a.x-b.x);
+    // decide how many labels to show based on visible span
+    const maxN = span < 2 ? 30 : span < 5 ? 18 : span < 10 ? 12 : span < 20 ? 8 : span < 40 ? 5 : 0;
 
-    if(items.length>0){
-      // Multi-pass repulsion — run until stable or max iterations
-      const MAX_ITER=60;
-      for(let iter=0;iter<MAX_ITER;iter++){
-        let moved=false;
-        for(let i=0;i<items.length;i++){
-          for(let j=i+1;j<items.length;j++){
-            const a=items[i], b=items[j];
-            // Check if label rects overlap: horizontally close AND vertically close
-            const hOverlap = b.x < a.x+a.tw+2 && b.x+b.tw > a.x-2;
-            const vOverlap = Math.abs(a.ly-b.ly) < LH+VGAP;
-            if(hOverlap && vOverlap){
-              // push them apart vertically — a goes up, b goes down
-              const mid=(a.ly+b.ly)/2;
-              const newA=mid-(LH+VGAP)/2;
-              const newB=mid+(LH+VGAP)/2;
-              a.ly=Math.max(PAD.t+2, newA);
-              b.ly=Math.min(PAD.t+cH-LH-2, newB);
-              moved=true;
-            }
-          }
-        }
-        if(!moved)break;
+    if(maxN > 0){
+      ctx.save();
+      ctx.font = `500 ${FONT_SZ}px "DM Mono"`;
+
+      // pick top-sig events, then cull ones too close in pixel space
+      const ranked = evs.slice().sort((a,b) => b.sig - a.sig);
+      const picked = [];
+      for(const ev of ranked){
+        if(picked.length >= maxN) break;
+        const ex = xp(ev.dv);
+        // skip if too close to an already-picked label
+        if(picked.some(p => Math.abs(xp(p.dv) - ex) < MIN_PX_GAP)) continue;
+        picked.push(ev);
       }
 
-      // Draw each label
-      items.forEach(s=>{
-        // tick line from dot to label
-        ctx.setLineDash([2,4]);
-        ctx.strokeStyle='rgba(255,255,255,0.15)';
-        ctx.lineWidth=1;
+      // sort by x position for stagger assignment
+      picked.sort((a,b) => a.dv - b.dv);
+
+      // assign alternating above/below rows to avoid overlap
+      // row 0 = close above, row 1 = further above, row 2 = close below, row 3 = further below
+      const STEM_SHORT = 14, STEM_LONG = 28;
+      picked.forEach((ev, i) => {
+        const ex = xp(ev.dv), ey = yp(ev.t);
+        const col = tCol(ev.t);
+        const maxChars = span < 3 ? 32 : span < 8 ? 24 : 18;
+        const txt = ev.label.length > maxChars ? ev.label.slice(0, maxChars) + '…' : ev.label;
+        const tw = ctx.measureText(txt).width;
+
+        // alternate: even → above, odd → below; long/short alternates too
+        const above = i % 2 === 0;
+        const far   = Math.floor(i/2) % 2 === 1;
+        const stemLen = far ? STEM_LONG : STEM_SHORT;
+
+        const ty = above
+          ? Math.max(PAD.t + LH + 2, ey - stemLen - LH)
+          : Math.min(PAD.t + cH - 4, ey + stemLen);
+
+        // stem line
         ctx.beginPath();
-        ctx.moveTo(s.x, s.dotY-5);
-        ctx.lineTo(s.x, s.ly+LH);
+        ctx.moveTo(ex, above ? ey - 5 : ey + 5);
+        ctx.lineTo(ex, above ? ty + LH + 1 : ty - 1);
+        ctx.strokeStyle = 'rgba(255,255,255,0.18)';
+        ctx.lineWidth = 1;
+        ctx.setLineDash([2, 3]);
         ctx.stroke();
         ctx.setLineDash([]);
 
-        // dark background
-        ctx.fillStyle='rgba(6,6,14,0.85)';
-        const bx=s.x-BGPAD, by=s.ly-BGPAD;
-        const bw=s.tw+BGPAD*2, bh=LH+BGPAD*2;
-        ctx.fillRect(bx, by, bw, bh);
+        // text — clamp x so it doesn't bleed outside chart
+        let tx = ex - tw / 2;
+        tx = Math.max(PAD.l + 2, Math.min(PAD.l + cW - tw - 2, tx));
 
-        // colored left accent on bg
-        ctx.fillStyle=s.col;
-        ctx.fillRect(bx, by, 2, bh);
+        // subtle background scrim for readability
+        ctx.fillStyle = 'rgba(6,6,14,0.75)';
+        ctx.fillRect(tx - 2, ty - LH + 1, tw + 4, LH + 2);
 
         // text
-        ctx.fillStyle=s.col;
-        ctx.fillText(s.txt, s.x+HPAD/2, s.ly+LH-2);
+        ctx.fillStyle = col;
+        ctx.globalAlpha = 0.9;
+        ctx.fillText(txt, tx, ty);
+        ctx.globalAlpha = 1;
       });
+
+      ctx.restore();
     }
+  }
+
+  // ─ hover crosshair — vertical line + date tag at bottom
+  if(hovered){
+    const hx=xp(hovered.dv), hy=yp(hovered.t);
+    const col=tCol(hovered.t);
+    ctx.save();
+    // vertical dashed line full chart height
+    ctx.setLineDash([3,4]);
+    ctx.strokeStyle=col.replace('rgb(','rgba(').replace(')',',0.35)');
+    ctx.strokeStyle='rgba(200,146,42,0.3)';
+    ctx.lineWidth=1;
+    ctx.beginPath();
+    ctx.moveTo(hx, PAD.t);
+    ctx.lineTo(hx, PAD.t+cH);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    // highlight ring on the hovered dot
+    ctx.beginPath();
+    ctx.arc(hx, hy, 10, 0, Math.PI*2);
+    ctx.strokeStyle=col;
+    ctx.lineWidth=1.5;
+    ctx.globalAlpha=0.5;
+    ctx.stroke();
     ctx.restore();
   }
 
@@ -1448,8 +1477,9 @@ mainC.addEventListener('mousemove',e=>{
     tip.style.display='block';
     positionTip(e.clientX,e.clientY);
     mainC.style.cursor='pointer';
+    schedDraw();
   } else {
-    if(hovered){hovered=null;tip.style.display='none';}
+    if(hovered){hovered=null;tip.style.display='none';schedDraw();}
     mainC.style.cursor='crosshair';
   }
 });
