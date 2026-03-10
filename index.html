@@ -189,6 +189,8 @@ h1 .word-tensions{
 .btn.active-ch2{background:rgba(255,160,60,0.12);border-color:rgba(255,160,60,0.4);color:#ffa03c;}
 .btn.active-ch3{background:rgba(80,210,140,0.12);border-color:rgba(80,210,140,0.4);color:#50d28c;}
 
+
+
 /* ─── SECOND TOOLBAR ROW ─── */
 .toolbar2{
   display:flex;align-items:center;justify-content:space-between;
@@ -481,8 +483,8 @@ footer{
         </h1>
       </div>
       <div class="header-right">
-        <div class="stat-block"><div class="stat-num" id="yearsStat">45</div><div class="stat-label">Years of Conflict</div></div>
-        <div class="stat-block"><div class="stat-num" id="eventCountStat">88</div><div class="stat-label">Key Events Mapped</div></div>
+        <div class="stat-block"><div class="stat-num">44</div><div class="stat-label">Years of Conflict</div></div>
+        <div class="stat-block"><div class="stat-num">104</div><div class="stat-label">Key Events Mapped</div></div>
         <div class="stat-block"><div class="stat-num">10.0</div><div class="stat-label">Peak Tension — Oct 1962</div></div>
       </div>
     </div>
@@ -521,8 +523,6 @@ footer{
   </div>
   <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
     <div class="zoom-readout" id="zoomReadout">1947 – 1991 · 45 years</div>
-    <div class="hint"><span class="hint-icon">⊕</span>scroll·drag·pinch to navigate</div>
-  </div>
 </div>
 
 <!-- ═══════════════════════════════════════════ TOOLBAR ROW 2 -->
@@ -627,140 +627,185 @@ footer{
 // DATA
 // ══════════════════════════════════════════════════════
 const EVENTS=[
-{y:1946,m:3,d:5,t:5.0,label:"Iron Curtain Speech",desc:"Winston Churchill warns that an 'Iron Curtain' has descended across Europe. The speech frames Soviet expansion as a long-term strategic threat and hardens Western attitudes.",lv:2,side:"Both"},
 {y:1947,m:3,d:12,t:5.0,label:"Truman Doctrine",desc:"Truman declares US will contain Soviet expansion. Greece & Turkey receive $400M. Cold War containment framework formally established before Congress.",lv:2,side:"US"},
-{y:1947,m:3,d:12,t:5.2,label:"Truman Doctrine (Aid Approved)",desc:"Congress approves major aid for Greece and Turkey under Truman's containment policy. Washington commits to sustained anti-communist intervention outside the Western Hemisphere.",lv:3,side:"US"},
 {y:1947,m:6,d:5,t:4.5,label:"Marshall Plan Announced",desc:"Marshall proposes massive economic aid to rebuild Europe. USSR refuses and pressures Eastern Bloc to reject it. The economic iron curtain deepens.",lv:2,side:"US"},
-{y:1947,m:9,d:18,t:5.2,label:"CIA Created / Cominform Founded",desc:"USSR founds Cominform to coordinate communist parties. US creates the CIA under the National Security Act. Both superpowers build covert intelligence infrastructure.",lv:3,side:"Both"},
+{y:1947,m:9,d:18,t:5.2,label:"CIA Created / Cominform Founded",desc:"USSR founds Cominform to coordinate communist parties. US creates the CIA under the National Security Act. Both superpowers build covert intelligence infrastructure.",lv:2,side:"Both"},
 {y:1948,m:2,d:25,t:6.5,label:"Communist Coup — Czechoslovakia",desc:"Soviet-backed communists seize power in Prague. Democratic government ousted. Shocks Western Europe and accelerates NATO negotiations.",lv:3,side:"USSR"},
-{y:1948,m:2,d:25,t:6.2,label:"Czechoslovak Non-Communist Ministers Resign",desc:"A constitutional crisis in Prague allows communists, backed by Soviet pressure, to consolidate control. The event shocks Western governments and public opinion.",lv:3,side:"USSR"},
-{y:1948,m:3,d:17,t:5.8,label:"Brussels Treaty Signed",desc:"Britain, France, Belgium, the Netherlands, and Luxembourg form a collective defense pact. It becomes a direct precursor to NATO's military architecture.",lv:3,side:"US"},
-{y:1948,m:6,d:20,t:6.0,label:"Deutsche Mark Introduced in West Zones",desc:"Western occupation authorities launch currency reform in western Germany. Moscow views it as unilateral state-building and escalates pressure in Berlin.",lv:3,side:"Both"},
 {y:1948,m:6,d:24,t:7.5,label:"Berlin Blockade",desc:"Stalin blockades West Berlin — 2 million civilians cut off. A massive US airlift lasting 323 days delivers 2.3M tons of supplies. First major Cold War confrontation.",lv:4,side:"USSR"},
 {y:1949,m:4,d:4,t:7.0,label:"NATO Founded",desc:"North Atlantic Treaty signed. 12 nations form a collective defense pact. Stalin views it as direct military encirclement of the USSR.",lv:3,side:"US"},
-{y:1949,m:5,d:12,t:6.8,label:"Berlin Blockade Lifted",desc:"Moscow ends the land blockade after the sustained Western airlift. The confrontation confirms that coercion over Berlin can trigger major allied counter-mobilization.",lv:3,side:"USSR"},
-{y:1949,m:5,d:23,t:6.5,label:"Federal Republic of Germany Formed",desc:"West Germany is established from the western occupation zones. The institutional division of Germany becomes entrenched in Cold War geopolitics.",lv:3,side:"US"},
-{y:1949,m:8,d:29,t:8.5,label:"USSR Detonates First A-Bomb",desc:"Joe-1 detonated — USSR breaks the US nuclear monopoly 4 years ahead of Western estimates. Truman orders H-bomb development. The arms race begins.",lv:4,side:"USSR"},
-{y:1949,m:10,d:1,t:8.0,label:"China Falls to Communism",desc:"Mao's PLA wins civil war. Nationalist government flees to Taiwan. The communist bloc now encompasses 1/4 of humanity.",lv:4,side:"Both"},
-{y:1949,m:10,d:7,t:6.5,label:"German Democratic Republic Formed",desc:"East Germany is proclaimed in the Soviet zone as a response to West German statehood. Rival German regimes formalize the front line of Europe.",lv:3,side:"USSR"},
-{y:1950,m:1,d:14,t:7.2,label:"Sino-Soviet Treaty of Friendship",desc:"Mao and Stalin sign a treaty of alliance and assistance, tightening the communist bloc at the start of the Korean War era.",lv:4,side:"Both"},
-{y:1950,m:1,d:30,t:7.5,label:"NSC-68 — Nuclear Buildup Directive",desc:"Top-secret NSC-68 calls for quadrupling US defense spending. Becomes the blueprint for US Cold War strategy for decades.",lv:4,side:"US"},
-{y:1950,m:6,d:25,t:8.5,label:"Korean War Begins",desc:"North Korea invades South Korea with Soviet-supplied tanks. US leads UN forces. MacArthur pushes to the Yalu River. China sends 300,000 troops. Brutal stalemate.",lv:4,side:"Both"},
-{y:1951,m:4,d:11,t:6.6,label:"Truman Dismisses General MacArthur",desc:"Truman removes MacArthur for publicly challenging civilian strategy in Korea. The decision confirms limited-war doctrine and civilian control in a nuclear age.",lv:3,side:"US"},
-{y:1951,m:6,d:23,t:6.7,label:"Korean Armistice Talks Open",desc:"Negotiations begin at Kaesong after a year of heavy fighting. The talks drag on while combat continues, revealing limits of military victory.",lv:3,side:"Both"},
+{y:1949,m:8,d:29,t:8.5,label:"USSR Detonates First A-Bomb",desc:"Joe-1 detonated — USSR breaks the US nuclear monopoly 4 years ahead of Western estimates. Truman orders H-bomb development. The arms race begins.",lv:5,side:"USSR"},
+{y:1949,m:10,d:1,t:8.0,label:"China Falls to Communism",desc:"Mao's PLA wins civil war. Nationalist government flees to Taiwan. The communist bloc now encompasses 1/4 of humanity.",lv:5,side:"Both"},
+{y:1950,m:1,d:30,t:7.5,label:"NSC-68 — Nuclear Buildup Directive",desc:"Top-secret NSC-68 calls for quadrupling US defense spending. Becomes the blueprint for US Cold War strategy for decades.",lv:3,side:"US"},
+{y:1950,m:6,d:25,t:8.5,label:"Korean War Begins",desc:"North Korea invades South Korea with Soviet-supplied tanks. US leads UN forces. MacArthur pushes to the Yalu River. China sends 300,000 troops. Brutal stalemate.",lv:5,side:"Both"},
 {y:1952,m:11,d:1,t:7.5,label:"US Tests Hydrogen Bomb",desc:"Ivy Mike — first thermonuclear device, 10.4 megatons, 700× Hiroshima. Escalates destructive capacity to civilization-ending scale.",lv:4,side:"US"},
 {y:1953,m:3,d:5,t:7.5,label:"Stalin Dies",desc:"Stalin dies — power struggle erupts in the Kremlin. Beria arrested and shot. Khrushchev emerges. CIA considers exploiting the transition.",lv:4,side:"USSR"},
 {y:1953,m:7,d:27,t:6.0,label:"Korean Armistice Signed",desc:"Korean War ends exactly where it started, at the 38th Parallel. 36,500 Americans, 900,000 Chinese, millions of Koreans dead. A frozen conflict persisting today.",lv:3,side:"Both"},
-{y:1953,m:8,d:12,t:7.0,label:"USSR Tests H-Bomb",desc:"Joe-4 detonated — just 9 months after the US. Khrushchev now inherits an arsenal capable of reaching any American city.",lv:3,side:"USSR"},
-{y:1954,m:6,d:9,t:5.5,label:"Army-McCarthy Hearings",desc:"'Have you no sense of decency?' McCarthy censured by Senate in December. Domestic anti-communist hysteria begins to recede.",lv:3,side:"US"},
+{y:1953,m:8,d:12,t:7.0,label:"USSR Tests H-Bomb",desc:"Joe-4 detonated — just 9 months after the US. Khrushchev now inherits an arsenal capable of reaching any American city.",lv:4,side:"USSR"},
+{y:1954,m:6,d:9,t:5.5,label:"Army-McCarthy Hearings",desc:"'Have you no sense of decency?' McCarthy censured by Senate in December. Domestic anti-communist hysteria begins to recede.",lv:2,side:"US"},
 {y:1954,m:8,d:19,t:5.8,label:"CIA Coups — Iran & Guatemala",desc:"CIA overthrows Mosaddegh in Iran (Op. Ajax) and Árbenz in Guatemala (PBSUCCESS). Covert Cold War expands into the developing world.",lv:3,side:"US"},
-{y:1955,m:5,d:9,t:6.9,label:"West Germany Joins NATO",desc:"The Federal Republic of Germany enters NATO, deepening Soviet fears of rearmed West German alignment with the US-led bloc.",lv:3,side:"US"},
-{y:1955,m:5,d:14,t:4.8,label:"Austria State Treaty",desc:"Occupation forces withdraw and Austria adopts permanent neutrality. It is a rare negotiated settlement between the blocs during high confrontation.",lv:2,side:"Both"},
 {y:1955,m:5,d:14,t:5.0,label:"Warsaw Pact Founded",desc:"USSR and 7 Eastern Bloc states sign the Warsaw Pact — direct military counter to NATO. Europe formally divided into two armed blocs.",lv:2,side:"USSR"},
 {y:1955,m:7,d:18,t:4.5,label:"Geneva Summit — Spirit of Geneva",desc:"First superpower summit since Potsdam. Eisenhower proposes 'Open Skies' aerial inspection — USSR refuses. Brief optimism. Austria becomes neutral.",lv:2,side:"Both"},
-{y:1956,m:2,d:25,t:5.5,label:"Khrushchev's Secret Speech",desc:"Khrushchev denounces Stalin's crimes to the Communist Party congress. Shock waves through the Eastern Bloc. Signals possible liberalization.",lv:3,side:"USSR"},
-{y:1956,m:10,d:23,t:7.2,label:"Hungarian Uprising Begins",desc:"Mass protests in Budapest demand reform and Soviet troop withdrawal. The revolt briefly threatens Soviet control before military intervention restores dominance.",lv:4,side:"USSR"},
-{y:1956,m:10,d:29,t:7.0,label:"Suez Crisis",desc:"UK, France & Israel invade Egypt. Both US and USSR demand withdrawal. Britain humiliated — the end of European imperial power.",lv:3,side:"Both"},
-{y:1956,m:10,d:30,t:8.3,label:"Imre Nagy Announces Hungary Leaving Warsaw Pact",desc:"Nagy declares neutrality and withdrawal from the Warsaw Pact during the Hungarian uprising. Moscow interprets this as a direct challenge to bloc control.",lv:4,side:"USSR"},
+{y:1956,m:2,d:25,t:5.5,label:"Khrushchev's Secret Speech",desc:"Khrushchev denounces Stalin's crimes to the Communist Party congress. Shock waves through the Eastern Bloc. Signals possible liberalization.",lv:2,side:"USSR"},
+{y:1956,m:10,d:29,t:7.0,label:"Suez Crisis",desc:"UK, France & Israel invade Egypt. Both US and USSR demand withdrawal. Britain humiliated — the end of European imperial power.",lv:4,side:"Both"},
 {y:1956,m:11,d:4,t:7.5,label:"Hungarian Revolution Crushed",desc:"Khrushchev sends 1,000+ tanks into Budapest. 2,500 Hungarians killed. UN condemns the USSR. The West watches helplessly.",lv:4,side:"USSR"},
-{y:1956,m:11,d:4,t:8.5,label:"Soviet Troops Re-enter Hungary",desc:"Large Soviet armored formations enter Budapest to depose Nagy's government. The operation reimposes communist rule and crushes resistance.",lv:4,side:"USSR"},
 {y:1957,m:10,d:4,t:6.5,label:"Sputnik — Space Race Begins",desc:"USSR launches Sputnik — the first satellite. The bleeping signal panics America. Proves USSR has ICBM capability to hit anywhere on Earth.",lv:3,side:"USSR"},
 {y:1957,m:11,d:3,t:6.8,label:"Sputnik 2 / Laika",desc:"Dog Laika orbits Earth. US scrambles to respond. Eisenhower creates NASA and DARPA. The Vanguard rocket explodes live on American television.",lv:3,side:"USSR"},
-{y:1958,m:11,d:10,t:6.6,label:"Khrushchev Berlin Deadline Speech",desc:"Soviet leadership reiterates demands for a separate peace treaty and Western withdrawal timetable from Berlin, intensifying the city crisis.",lv:3,side:"USSR"},
 {y:1958,m:11,d:27,t:6.5,label:"Berlin Ultimatum",desc:"Khrushchev demands Western powers vacate Berlin within 6 months. US refuses. Berlin becomes Cold War's most dangerous flashpoint.",lv:3,side:"USSR"},
 {y:1959,m:1,d:1,t:5.5,label:"Cuban Revolution — Castro Takes Power",desc:"Castro ousts Batista. US ambivalence shifts to hostility as Castro nationalizes American assets. USSR begins supplying arms to Cuba — 90 miles from Florida.",lv:3,side:"Both"},
-{y:1959,m:7,d:24,t:4.6,label:"Camp David Talks (Eisenhower–Khrushchev Process)",desc:"Following Khrushchev's US visit, leaders agree to continue dialogue and postpone the Berlin deadline. The temporary thaw raises hopes but remains fragile.",lv:2,side:"Both"},
 {y:1959,m:7,d:24,t:5.0,label:"Kitchen Debate",desc:"Nixon and Khrushchev debate capitalism vs. communism in a model American kitchen in Moscow. A televised ideological clash for the ages.",lv:2,side:"Both"},
 {y:1960,m:5,d:1,t:7.5,label:"U-2 Spy Plane Shot Down",desc:"Gary Powers shot down over Sverdlovsk. Eisenhower caught lying. Paris Summit collapses. The Cold War thaw freezes solid.",lv:4,side:"US"},
 {y:1960,m:11,d:8,t:7.0,label:"Kennedy Elected",desc:"JFK wins on closing the 'missile gap' (later found to heavily favor the US). Khrushchev initially believes he can exploit Kennedy's inexperience.",lv:3,side:"US"},
 {y:1961,m:4,d:17,t:7.5,label:"Bay of Pigs — Catastrophic Failure",desc:"CIA-trained Cuban exiles invade — Kennedy refuses air cover. 1,200 captured. Kennedy is humiliated. Khrushchev resolves to place missiles in Cuba.",lv:4,side:"US"},
-{y:1961,m:5,d:5,t:6.4,label:"Vienna Summit Preparatory NATO Consultations",desc:"US and allies coordinate positions ahead of Kennedy's meeting with Khrushchev, anticipating renewed pressure over Berlin.",lv:3,side:"US"},
-{y:1961,m:6,d:3,t:7.1,label:"Kennedy Announces Expanded Conventional Build-Up",desc:"After Vienna tensions, Kennedy requests major increases in US conventional and civil defense capabilities. Washington prepares for prolonged Berlin and global confrontation.",lv:4,side:"US"},
 {y:1961,m:6,d:4,t:7.5,label:"Vienna Summit — Khrushchev Bullies JFK",desc:"Khrushchev intimidates the 44-year-old Kennedy, renews the Berlin ultimatum. JFK reportedly shaken: 'It's going to be a cold winter.'",lv:4,side:"USSR"},
-{y:1961,m:8,d:13,t:8.0,label:"Berlin Wall Constructed",desc:"East Germany erects the Wall overnight. Barbed wire first, then concrete. Families divided. Kennedy calls it 'a wall of shame' but accepts it over war.",lv:4,side:"USSR"},
-{y:1961,m:8,d:15,t:8.1,label:"Border Closures Harden Around Berlin",desc:"East German authorities convert initial wire barriers into fortified controls and armed checkpoints, making division effectively permanent.",lv:4,side:"USSR"},
-{y:1961,m:10,d:27,t:8.7,label:"Checkpoint Charlie Tank Standoff",desc:"US and Soviet tanks face each other at close range in Berlin. Diplomatic backchannels avert live fire after hours of confrontation.",lv:5,side:"Both"},
-{y:1961,m:10,d:30,t:8.0,label:"Tsar Bomba — 50 Megatons",desc:"The most powerful explosion in human history. Shockwave circles Earth three times. Windows shattered 900km away. Pure nuclear intimidation.",lv:4,side:"USSR"},
+{y:1961,m:8,d:13,t:8.0,label:"Berlin Wall Constructed",desc:"East Germany erects the Wall overnight. Barbed wire first, then concrete. Families divided. Kennedy calls it 'a wall of shame' but accepts it over war.",lv:5,side:"USSR"},
+{y:1961,m:10,d:30,t:8.0,label:"Tsar Bomba — 50 Megatons",desc:"The most powerful explosion in human history. Shockwave circles Earth three times. Windows shattered 900km away. Pure nuclear intimidation.",lv:5,side:"USSR"},
 {y:1962,m:3,d:1,t:8.0,label:"US Nuclear Superiority Revealed",desc:"US official reveals a massive lead in warheads — destroying Khrushchev's claims of parity. Humiliated, he secretly resolves to place missiles in Cuba.",lv:4,side:"US"},
-{y:1962,m:10,d:16,t:10.0,label:"Cuban Missile Crisis — DEFCON 2",desc:"October 16–28: U-2 photos reveal Soviet missiles in Cuba. DEFCON 2. 13 days of secret negotiations. Soviet ships turn back. Missiles withdrawn. The world's closest approach to nuclear annihilation.",lv:5,side:"Both"},
-{y:1962,m:10,d:24,t:9.5,label:"US Naval Quarantine Line Enforced",desc:"US forces begin strict interception around Cuba under quarantine rules. Multiple Soviet vessels alter course as crisis diplomacy intensifies.",lv:5,side:"Both"},
-{y:1962,m:10,d:27,t:10.0,label:"Black Saturday — Closest Point of Cuban Missile Crisis",desc:"A U-2 is shot down over Cuba and another strays into Soviet airspace. Field commanders and political leaders face minutes-to-midnight nuclear escalation risks.",lv:5,side:"Both"},
+{y:1962,m:10,d:16,t:10.0,label:"Cuban Missile Crisis — DEFCON 2",desc:"October 16–28: U-2 photos reveal Soviet missiles in Cuba. DEFCON 2. 13 days of secret negotiations. Soviet ships turn back. Missiles withdrawn. The world's closest approach to nuclear annihilation.",lv:6,side:"Both"},
 {y:1963,m:6,d:20,t:6.5,label:"Moscow Hotline Established",desc:"Direct teletype link between the White House and Kremlin installed after the missile crisis. First use during the 1967 Six-Day War.",lv:3,side:"Both"},
-{y:1963,m:6,d:30,t:6.2,label:"Hotline Agreement Signed",desc:"Washington and Moscow sign the agreement creating direct crisis communication links. The mechanism aims to reduce accidental war from miscalculation.",lv:3,side:"Both"},
 {y:1963,m:8,d:5,t:6.0,label:"Partial Nuclear Test Ban Treaty",desc:"US, USSR & UK ban atmospheric, underwater and space nuclear tests. First arms control agreement of the Cold War.",lv:3,side:"Both"},
-{y:1963,m:11,d:22,t:7.0,label:"Kennedy Assassinated",desc:"JFK shot in Dallas. Soviets briefly feared it was a prelude to a US attack and went on alert. A Cold War leadership vacuum at a critical moment.",lv:3,side:"US"},
+{y:1963,m:11,d:22,t:7.0,label:"Kennedy Assassinated",desc:"JFK shot in Dallas. Soviets briefly feared it was a prelude to a US attack and went on alert. A Cold War leadership vacuum at a critical moment.",lv:4,side:"US"},
 {y:1964,m:8,d:7,t:6.8,label:"Gulf of Tonkin — Vietnam Escalates",desc:"Alleged North Vietnamese attacks on US destroyers. Congress issues the Gulf of Tonkin Resolution — a blank check for war. Later found manipulated.",lv:3,side:"US"},
 {y:1964,m:10,d:14,t:6.5,label:"Khrushchev Ousted",desc:"Khrushchev removed by the Politburo — humiliated over Cuba, agricultural failures, erratic behavior. Brezhnev takes power. A harder line returns.",lv:3,side:"USSR"},
-{y:1964,m:10,d:16,t:7.0,label:"China Detonates Atomic Bomb",desc:"PRC tests its first nuclear device. Sino-Soviet split now encompasses nuclear dimension. A three-way Cold War dynamic emerges.",lv:3,side:"Both"},
-{y:1965,m:3,d:8,t:6.8,label:"Vietnam War Escalation",desc:"Operation Rolling Thunder. Marines land at Da Nang. 184,000 US troops by year's end; 536,000 by 1968. USSR and China supply North Vietnam.",lv:3,side:"US"},
+{y:1964,m:10,d:16,t:7.0,label:"China Detonates Atomic Bomb",desc:"PRC tests its first nuclear device. Sino-Soviet split now encompasses nuclear dimension. A three-way Cold War dynamic emerges.",lv:4,side:"Both"},
+{y:1965,m:3,d:8,t:6.8,label:"Vietnam War Escalation",desc:"Operation Rolling Thunder. Marines land at Da Nang. 184,000 US troops by year's end; 536,000 by 1968. USSR and China supply North Vietnam.",lv:4,side:"US"},
 {y:1967,m:6,d:5,t:6.5,label:"Six-Day War",desc:"Israel defeats Egypt, Syria, Jordan in 6 days. US backs Israel; USSR backs the Arabs. The Moscow-Washington hotline is used for the first time.",lv:3,side:"Both"},
-{y:1967,m:6,d:10,t:6.1,label:"Glassboro Summit (Johnson–Kosygin)",desc:"US and Soviet leaders hold emergency talks during the Arab-Israeli war. Though no formal deal emerges, dialogue helps cap direct superpower risk.",lv:3,side:"Both"},
 {y:1968,m:1,d:30,t:6.5,label:"Tet Offensive — Vietnam Turning Point",desc:"North Vietnam launches massive coordinated attacks. US Embassy in Saigon breached. A military setback absorbed, but American public support shatters.",lv:3,side:"Both"},
-{y:1968,m:3,d:31,t:6.1,label:"Johnson Limits Vietnam Bombing",desc:"LBJ halts most bombing of North Vietnam and opens a path to negotiations. The move reflects strategic strain and domestic pressure on US policy.",lv:3,side:"US"},
-{y:1968,m:7,d:1,t:5.7,label:"NPT Opened for Signature",desc:"The Nuclear Non-Proliferation Treaty is opened in Washington, London, and Moscow to limit spread of nuclear weapons beyond existing powers.",lv:3,side:"Both"},
 {y:1968,m:8,d:20,t:7.5,label:"Prague Spring Crushed",desc:"Dubček's reforms crushed by 500,000 Warsaw Pact troops. The Brezhnev Doctrine: USSR can intervene anywhere socialism is threatened.",lv:4,side:"USSR"},
-{y:1969,m:1,d:20,t:5.9,label:"Nixon Inauguration and Vietnamization Signal",desc:"The new US administration signals a shift toward reducing direct ground burden while maintaining anti-communist containment commitments.",lv:3,side:"US"},
+{y:1969,m:7,d:20,t:5.5,label:"Moon Landing — Apollo 11",desc:"Neil Armstrong walks on the Moon. Decisive US victory in the Space Race. The Soviet lunar program is secretly abandoned.",lv:2,side:"US"},
 {y:1969,m:3,d:2,t:5.8,label:"Sino-Soviet Border Clashes",desc:"Nuclear powers exchanging fire along the Ussuri River. Soviets discuss a pre-emptive strike on China. Nixon sees a strategic opportunity.",lv:3,side:"USSR"},
-{y:1969,m:7,d:20,t:5.5,label:"Moon Landing — Apollo 11",desc:"Neil Armstrong walks on the Moon. Decisive US victory in the Space Race. The Soviet lunar program is secretly abandoned.",lv:3,side:"US"},
 {y:1970,m:5,d:4,t:6.2,label:"Kent State / Cambodia Invasion",desc:"US expands the war into Cambodia. National Guard kills 4 students at Kent State. 450 colleges shut down. US Cold War credibility erodes.",lv:3,side:"US"},
 {y:1971,m:7,d:9,t:5.0,label:"Ping-Pong Diplomacy / China Opening",desc:"Kissinger secretly visits Beijing. Nixon prepares his historic opening. Triangular diplomacy — playing China against the USSR — begins.",lv:2,side:"US"},
 {y:1972,m:2,d:21,t:4.8,label:"Nixon Visits China",desc:"Nixon lands in Beijing — the week that changed the world. Meets Mao. Fundamentally realigns global Cold War balance. USSR is deeply alarmed.",lv:2,side:"US"},
-{y:1972,m:5,d:26,t:4.4,label:"Basic Principles Agreement (US–USSR)",desc:"Alongside SALT I, both powers sign principles for coexistence and crisis restraint. It codifies détente norms even as rivalry continues in the periphery.",lv:2,side:"Both"},
 {y:1972,m:5,d:26,t:4.5,label:"SALT I / ABM Treaty — Détente Peak",desc:"Nixon visits Moscow. SALT I caps nuclear delivery vehicles. ABM Treaty limits missile defense. Détente at its zenith.",lv:2,side:"Both"},
-{y:1973,m:9,d:11,t:5.2,label:"Chile Coup — CIA Backs Pinochet",desc:"CIA spends $8M destabilizing Chile. Allende killed. Pinochet's brutal dictatorship installed. The Latin American left radicalizes.",lv:3,side:"US"},
 {y:1973,m:10,d:6,t:6.5,label:"Yom Kippur War / DEFCON 3",desc:"Egypt and Syria attack Israel. When the USSR threatens direct intervention, the US raises alert to DEFCON 3 — the closest nuclear standoff since Cuba.",lv:3,side:"Both"},
+{y:1973,m:9,d:11,t:5.2,label:"Chile Coup — CIA Backs Pinochet",desc:"CIA spends $8M destabilizing Chile. Allende killed. Pinochet's brutal dictatorship installed. The Latin American left radicalizes.",lv:3,side:"US"},
 {y:1974,m:8,d:9,t:5.5,label:"Nixon Resigns — Watergate",desc:"Nixon resigns — crippled US foreign policy. Kissinger maintains Détente but loses political backing. CIA operations curtailed by Congress.",lv:3,side:"US"},
 {y:1975,m:4,d:30,t:5.0,label:"Saigon Falls",desc:"North Vietnamese tanks roll into Saigon. Chaotic US evacuation from the embassy roof. 58,000 Americans died. Communism appears to be advancing globally.",lv:2,side:"Both"},
-{y:1975,m:5,d:1,t:6.2,label:"Mayaguez Incident",desc:"US forces launch an operation after Cambodian seizure of the SS Mayaguez. The clash highlights post-Vietnam volatility in US Cold War posture.",lv:3,side:"US"},
 {y:1975,m:8,d:1,t:4.5,label:"Helsinki Accords",desc:"35 nations recognize post-WWII borders — a Soviet gain. But human rights clauses (Basket III) become a lever for dissidents. Double-edged for the USSR.",lv:2,side:"Both"},
 {y:1975,m:11,d:11,t:5.5,label:"Angola Proxy War",desc:"USSR and Cuba back MPLA; US backs UNITA. 36,000 Cuban troops secure the Soviet-aligned government. Africa becomes a Cold War battleground.",lv:3,side:"Both"},
 {y:1977,m:10,d:14,t:5.8,label:"SS-20 Missiles Deployed",desc:"USSR deploys SS-20 intermediate-range missiles targeting Western Europe. European security balance shifts dramatically. NATO responds with Pershing deployments.",lv:3,side:"Both"},
-{y:1978,m:8,d:12,t:5.1,label:"Sino-Japanese Treaty of Peace and Friendship",desc:"Japan and China formalize a treaty that underlines China's outward balancing beyond the Soviet bloc. Triangular diplomacy further constrains Moscow.",lv:3,side:"Both"},
 {y:1978,m:9,d:17,t:6.0,label:"Camp David Accords",desc:"Egypt signs peace with Israel — pulling the Arab world's largest military out of Soviet orbit. A massive strategic loss for the USSR.",lv:3,side:"Both"},
 {y:1979,m:2,d:1,t:6.5,label:"Iranian Revolution / Hostage Crisis",desc:"Shah falls; Khomeini takes power. 52 US diplomats held hostage for 444 days. Radical Islamism threatens both superpowers.",lv:3,side:"Both"},
 {y:1979,m:6,d:18,t:7.0,label:"SALT II Signed but Shelved",desc:"Carter and Brezhnev sign SALT II — then the Soviet invasion of Afghanistan kills ratification. Arms control framework collapses.",lv:3,side:"Both"},
-{y:1979,m:12,d:12,t:7.8,label:"NATO Double-Track Decision",desc:"NATO approves new missile deployments while offering arms-control negotiations, creating the framework for the Euromissile confrontation.",lv:4,side:"Both"},
-{y:1979,m:12,d:25,t:8.5,label:"Soviet Invasion of Afghanistan",desc:"Christmas 1979 — 100,000 Soviet troops invade. Brezhnev miscalculates badly. The Carter Doctrine declared. CIA arms the mujahideen. Détente is officially dead.",lv:4,side:"USSR"},
-{y:1980,m:1,d:4,t:7.6,label:"Carter Doctrine Announced",desc:"The US declares Persian Gulf access a vital interest and signals military force if necessary. Soviet actions in Afghanistan trigger a wider strategic hardening.",lv:4,side:"US"},
-{y:1980,m:8,d:31,t:7.0,label:"Solidarity Agreements in Poland",desc:"Workers secure legal recognition for Solidarity, creating an unprecedented independent labor movement inside the Eastern bloc.",lv:3,side:"Both"},
+{y:1979,m:12,d:25,t:8.5,label:"Soviet Invasion of Afghanistan",desc:"Christmas 1979 — 100,000 Soviet troops invade. Brezhnev miscalculates badly. The Carter Doctrine declared. CIA arms the mujahideen. Détente is officially dead.",lv:5,side:"USSR"},
+{y:1980,m:11,d:4,t:8.0,label:"Reagan Elected — Second Cold War",desc:"Reagan wins in a landslide. 'Evil Empire.' Defense spending doubles. B-1 bomber, MX missiles, 600-ship navy. Military Keynesianism reshapes the US economy.",lv:5,side:"US"},
 {y:1980,m:9,d:22,t:7.5,label:"Iran-Iraq War Begins",desc:"Saddam invades Iran. Both superpowers maneuver. US eventually tilts toward Iraq. USSR sells weapons to both sides. The Persian Gulf is militarized.",lv:4,side:"Both"},
-{y:1980,m:11,d:4,t:8.0,label:"Reagan Elected — Second Cold War",desc:"Reagan wins in a landslide. 'Evil Empire.' Defense spending doubles. B-1 bomber, MX missiles, 600-ship navy. Military Keynesianism reshapes the US economy.",lv:4,side:"US"},
 {y:1981,m:12,d:13,t:7.8,label:"Martial Law in Poland — Solidarity",desc:"Jaruzelski declares martial law, crushing Solidarity under Soviet pressure. Reagan imposes economic sanctions. Pope John Paul II rallies Catholics worldwide.",lv:4,side:"Both"},
 {y:1982,m:11,d:10,t:7.5,label:"Brezhnev Dies / Andropov Takes Power",desc:"Brezhnev dies. Andropov (former KGB chief) succeeds him. Brief hopes for reform — but gravely ill from day one; dies 15 months later.",lv:4,side:"USSR"},
-{y:1983,m:3,d:8,t:8.0,label:"Reagan's 'Evil Empire' Speech",desc:"Reagan calls the USSR 'evil empire' and 'focus of evil in the modern world.' Soviets furious. Ideological war now alongside the geopolitical one.",lv:4,side:"US"},
-{y:1983,m:3,d:23,t:8.2,label:"SDI 'Star Wars' Announced",desc:"Reagan proposes a space-based missile defense shield. If it works, it nullifies the Soviet deterrent. Moscow cannot match it economically. Deep alarm.",lv:4,side:"US"},
-{y:1983,m:9,d:1,t:8.5,label:"KAL 007 Shot Down — 269 Dead",desc:"Soviet Su-15 shoots down Korean Air Lines 007 — 269 dead including a US congressman. Reagan: 'a crime against humanity.'",lv:4,side:"USSR"},
-{y:1983,m:9,d:26,t:8.8,label:"Soviet False Alarm Incident (Petrov)",desc:"A Soviet early-warning system reports incoming US missiles; duty officer Stanislav Petrov judges it false, preventing dangerous escalation.",lv:5,side:"USSR"},
-{y:1983,m:11,d:2,t:9.0,label:"ABLE ARCHER 83 — Near Nuclear War",desc:"NATO exercise so realistic Soviets believe an attack is imminent. Soviet nuclear forces go on full alert. British double-agent Gordievsky warns London. The most dangerous moment since 1962.",lv:5,side:"Both"},
-{y:1983,m:11,d:20,t:8.0,label:"INF Euromissile Deployments Begin",desc:"NATO starts deploying Pershing II and cruise missiles in Western Europe. Moscow suspends parts of arms-control dialogue and tensions spike.",lv:4,side:"Both"},
+{y:1983,m:3,d:8,t:8.0,label:"Reagan's 'Evil Empire' Speech",desc:"Reagan calls the USSR 'evil empire' and 'focus of evil in the modern world.' Soviets furious. Ideological war now alongside the geopolitical one.",lv:5,side:"US"},
+{y:1983,m:3,d:23,t:8.2,label:"SDI 'Star Wars' Announced",desc:"Reagan proposes a space-based missile defense shield. If it works, it nullifies the Soviet deterrent. Moscow cannot match it economically. Deep alarm.",lv:5,side:"US"},
+{y:1983,m:9,d:1,t:8.5,label:"KAL 007 Shot Down — 269 Dead",desc:"Soviet Su-15 shoots down Korean Air Lines 007 — 269 dead including a US congressman. Reagan: 'a crime against humanity.'",lv:5,side:"USSR"},
+{y:1983,m:11,d:2,t:9.0,label:"ABLE ARCHER 83 — Near Nuclear War",desc:"NATO exercise so realistic Soviets believe an attack is imminent. Soviet nuclear forces go on full alert. British double-agent Gordievsky warns London. The most dangerous moment since 1962.",lv:6,side:"Both"},
 {y:1984,m:2,d:13,t:8.0,label:"Chernenko Takes Power",desc:"Andropov dies. Chernenko — 72, emphysemic — takes power. The third Soviet leader in three years. Gerontocracy at its most dysfunctional.",lv:4,side:"USSR"},
-{y:1984,m:5,d:8,t:8.5,label:"USSR Boycotts LA Olympics",desc:"Soviet defector Gordievsky reveals the Kremlin genuinely feared a US first strike. RYAN operation monitors the US for attack signs around the clock.",lv:4,side:"USSR"},
+{y:1984,m:5,d:8,t:8.5,label:"USSR Boycotts LA Olympics",desc:"Soviet defector Gordievsky reveals the Kremlin genuinely feared a US first strike. RYAN operation monitors the US for attack signs around the clock.",lv:5,side:"USSR"},
 {y:1985,m:3,d:11,t:7.5,label:"Gorbachev Takes Power",desc:"Mikhail Gorbachev, 54, becomes General Secretary. Youngest Soviet leader since Stalin. Unilateral nuclear test moratorium declared. Reagan cautiously intrigued.",lv:4,side:"USSR"},
 {y:1985,m:11,d:19,t:6.5,label:"Geneva Summit — Reagan & Gorbachev",desc:"First Reagan-Gorbachev summit. No agreements reached but personal chemistry ignites. Famous fireside chat. Seeds of the end of the Cold War are planted.",lv:3,side:"Both"},
 {y:1986,m:4,d:26,t:6.0,label:"Chernobyl Disaster",desc:"Reactor 4 explodes — worst nuclear accident in history. Gorbachev sees it as proof the Soviet system cannot be incrementally reformed. Glasnost dramatically accelerates.",lv:3,side:"USSR"},
 {y:1986,m:10,d:11,t:5.0,label:"Reykjavik Summit — Almost Zero Nukes",desc:"Reagan and Gorbachev come within an inch of eliminating all nuclear weapons. Reagan refuses to limit SDI. Gorbachev walks out. But the INF framework is now established.",lv:2,side:"Both"},
-{y:1987,m:12,d:8,t:4.8,label:"INF Ratification Process Begins",desc:"After signing, both sides begin domestic approval and verification planning, translating summit diplomacy into enforceable disarmament.",lv:2,side:"Both"},
 {y:1987,m:12,d:8,t:4.5,label:"INF Treaty Signed",desc:"Reagan and Gorbachev eliminate all intermediate-range nuclear missiles — 2,692 weapons. First treaty to actually reduce nuclear arsenals. 'Trust, but verify.'",lv:2,side:"Both"},
 {y:1988,m:5,d:15,t:4.0,label:"USSR Withdraws from Afghanistan",desc:"Soviet troops begin withdrawal. 15,000 Soviets and 1–2 million Afghans dead. Gorbachev calls it 'the bleeding wound.' The mujahideen are victorious.",lv:2,side:"USSR"},
 {y:1988,m:5,d:29,t:4.5,label:"Reagan in Moscow — 'Evil Empire' Recanted",desc:"Reagan walks through Red Square. Asked about 'evil empire': 'That was another time, another era.' The transformation from adversaries to partners is visible.",lv:2,side:"Both"},
-{y:1988,m:12,d:7,t:3.8,label:"Gorbachev UN Speech — Cold War Ending",desc:"Gorbachev announces a unilateral cut of 500,000 troops, withdrawal from Eastern Europe. Repudiates the Brezhnev Doctrine. Western leaders are stunned.",lv:2,side:"USSR"},
+{y:1988,m:12,d:7,t:3.8,label:"Gorbachev UN Speech — Cold War Ending",desc:"Gorbachev announces a unilateral cut of 500,000 troops, withdrawal from Eastern Europe. Repudiates the Brezhnev Doctrine. Western leaders are stunned.",lv:1,side:"USSR"},
 {y:1989,m:6,d:4,t:4.0,label:"Tiananmen Square — China Diverges",desc:"Chinese army crushes pro-democracy protesters. Gorbachev had just visited Beijing — the contrast between Soviet reform and Chinese repression is stark.",lv:2,side:"Both"},
-{y:1989,m:9,d:1,t:3.5,label:"Eastern Europe Revolutions",desc:"Poland: Solidarity wins free elections. Hungary opens its border. Czechoslovakia, Bulgaria, Romania: all hold revolutions. The USSR does not intervene.",lv:2,side:"Both"},
+{y:1989,m:9,d:1,t:3.5,label:"Eastern Europe Revolutions",desc:"Poland: Solidarity wins free elections. Hungary opens its border. Czechoslovakia, Bulgaria, Romania: all hold revolutions. The USSR does not intervene.",lv:1,side:"Both"},
 {y:1989,m:11,d:9,t:3.0,label:"Berlin Wall Falls",desc:"East Germany announces citizens may cross freely. Crowds dismantle the Wall with hammers. Families reunited after 28 years. The defining image of Cold War's end.",lv:1,side:"Both"},
 {y:1989,m:12,d:3,t:2.8,label:"Malta Summit — Cold War 'Ends'",desc:"Bush and Gorbachev meet aboard ships off Malta. Bush declares the Cold War over. Both sides agree to cooperate. The world holds its breath.",lv:1,side:"Both"},
-{y:1990,m:3,d:12,t:3.8,label:"Lithuania Declares Independence",desc:"Lithuania proclaims restoration of independence from the USSR, accelerating the disintegration pressures on the Soviet Union.",lv:2,side:"USSR"},
-{y:1990,m:7,d:16,t:3.4,label:"Kohl–Gorbachev Caucasus Agreement",desc:"Gorbachev accepts unified Germany's right to choose NATO membership in return for major financial and security assurances.",lv:2,side:"Both"},
 {y:1990,m:10,d:3,t:2.5,label:"German Reunification",desc:"Two Germanys reunite. Gorbachev accepts NATO membership of unified Germany — a stunning concession. Cold War architecture crumbles visibly.",lv:1,side:"Both"},
-{y:1990,m:11,d:21,t:3.2,label:"Treaty on Conventional Armed Forces in Europe Signed",desc:"NATO and Warsaw Pact states agree deep cuts to conventional weapons. The treaty reduces surprise-attack capacity as the Cold War order collapses.",lv:2,side:"Both"},
 {y:1991,m:7,d:1,t:2.5,label:"Warsaw Pact Dissolves",desc:"The Soviet military alliance that defined European security for 36 years ceases to exist. Former members immediately apply to join NATO.",lv:1,side:"USSR"},
 {y:1991,m:7,d:31,t:2.0,label:"START I Treaty Signed",desc:"Bush and Gorbachev sign START I — reducing strategic warheads by 30%. The most comprehensive arms reduction agreement in history.",lv:1,side:"Both"},
 {y:1991,m:8,d:19,t:3.5,label:"Failed Coup Against Gorbachev",desc:"KGB and military hardliners attempt a coup. Yeltsin stands on a tank at the Russian parliament. Three days — the coup collapses. The Soviet collapse accelerates.",lv:2,side:"USSR"},
-{y:1991,m:12,d:25,t:1.5,label:"Soviet Union Dissolves",desc:"Gorbachev resigns. The Soviet flag is lowered over the Kremlin for the last time. 15 new nations emerge. 44 years. 70,000+ nuclear warheads. The Cold War ends.",lv:1,side:"USSR"},
-{y:1991,m:12,d:26,t:1.2,label:"USSR Supreme Soviet Dissolution Declaration",desc:"The upper chamber formally declares the Soviet Union dissolved, completing the legal end of the USSR after republic secessions.",lv:1,side:"USSR"},
-
+{y:1991,m:12,d:25,t:1.5,label:"Soviet Union Dissolves",desc:"Gorbachev resigns. The Soviet flag is lowered over the Kremlin for the last time. 15 new nations emerge. 44 years. 70,000+ nuclear warheads. The Cold War ends.",lv:1,side:"USSR"},,
+{y:1947,m:9,d:2,t:4.8,label:"Kennan's Long Telegram Policy Paper",desc:"George Kennan's 'X Article' in Foreign Affairs formally articulates containment as US grand strategy, shaping Cold War policy for decades.",lv:2,side:"US"},
+{y:1948,m:4,d:1,t:6.0,label:"USSR Restricts Western Berlin Access",desc:"Soviet forces begin harassing Western military convoys into Berlin, a dress rehearsal for the full blockade two months later.",lv:3,side:"USSR"},
+{y:1949,m:1,d:25,t:6.0,label:"Comecon Founded",desc:"USSR creates the Council for Mutual Economic Assistance to bind Eastern Bloc economies to Moscow, countering the Marshall Plan.",lv:3,side:"USSR"},
+{y:1950,m:9,d:15,t:8.0,label:"Inchon Landing — MacArthur's Gamble",desc:"MacArthur's surprise amphibious assault at Inchon reverses the Korean War. UN forces push to the Chinese border — provoking China's entry.",lv:4,side:"US"},
+{y:1951,m:9,d:1,t:6.2,label:"ANZUS Treaty Signed",desc:"Australia, New Zealand and the US form a Pacific security alliance, extending containment across the Asia-Pacific.",lv:3,side:"US"},
+{y:1952,m:3,d:10,t:6.8,label:"Stalin's Germany Note",desc:"Stalin proposes a unified neutral Germany in exchange for NATO withdrawal — Western powers reject it as a trap, hardening the division.",lv:3,side:"USSR"},
+{y:1952,m:10,d:3,t:6.5,label:"Britain Tests First A-Bomb",desc:"UK becomes the third nuclear power, detonating its first atomic device off Australia. The nuclear club expands.",lv:3,side:"US"},
+{y:1953,m:6,d:17,t:6.4,label:"East German Workers' Uprising",desc:"Workers revolt against Soviet-backed regime. Soviet tanks crush the uprising. 55 killed. The regime's fragility exposed.",lv:3,side:"USSR"},
+{y:1953,m:12,d:8,t:5.8,label:"Atoms for Peace Speech",desc:"Eisenhower proposes international atomic energy cooperation at the UN, attempting to channel nuclear technology toward civilian use.",lv:2,side:"US"},
+{y:1954,m:3,d:1,t:7.0,label:"Castle Bravo H-Bomb Test",desc:"15-megaton US hydrogen bomb test at Bikini Atoll — 1,000× Hiroshima. Radioactive fallout contaminates 7,000 sq miles. Crew of Japanese fishing boat irradiated.",lv:4,side:"US"},
+{y:1954,m:5,d:7,t:5.8,label:"Dien Bien Phu Falls",desc:"French fortress falls to Viet Minh after 57-day siege. France abandons Indochina. Vietnam divided at 17th Parallel. US begins filling the vacuum.",lv:3,side:"Both"},
+{y:1954,m:7,d:21,t:5.0,label:"Geneva Accords — Vietnam Divided",desc:"International conference divides Vietnam at 17th Parallel. Ho Chi Minh controls the North. US backs South Vietnam, setting the stage for the next war.",lv:2,side:"Both"},
+{y:1955,m:5,d:7,t:5.8,label:"Bulganin-Khrushchev Leadership Confirmed",desc:"Post-Stalin collective leadership crystallises around Khrushchev. Soviet foreign policy becomes more assertive but also more flexible than under Stalin.",lv:3,side:"USSR"},
+{y:1956,m:7,d:26,t:6.0,label:"Nasser Nationalises Suez Canal",desc:"Egypt seizes the Suez Canal from British and French control, triggering a crisis that will humiliate Western Europe and elevate both superpowers.",lv:3,side:"Both"},
+{y:1957,m:8,d:26,t:6.8,label:"USSR Tests First ICBM",desc:"Soviet R-7 ICBM successfully tested — the first intercontinental ballistic missile. Proves the USSR can now hit any target in America.",lv:4,side:"USSR"},
+{y:1957,m:9,d:29,t:7.0,label:"Kyshtym Nuclear Disaster",desc:"Soviet nuclear waste explosion at Chelyabinsk-40 contaminates 20,000 sq km. Secretly covered up for decades — the world's second worst nuclear accident.",lv:4,side:"USSR"},
+{y:1958,m:8,d:23,t:7.0,label:"Taiwan Strait Crisis",desc:"China bombards Quemoy and Matsu islands. US deploys carrier groups. Eisenhower threatens nuclear response. Crisis reveals limits of brinkmanship.",lv:4,side:"Both"},
+{y:1959,m:11,d:10,t:6.2,label:"Antarctic Treaty Signed",desc:"12 nations demilitarise Antarctica — a rare Cold War cooperation agreement, banning military use and nuclear testing on the continent.",lv:2,side:"Both"},
+{y:1960,m:7,d:1,t:6.8,label:"Soviet Advisers Leave China",desc:"Khrushchev withdraws 1,400 Soviet technicians from China, ending Soviet aid and cementing the Sino-Soviet split. The communist bloc fractures.",lv:3,side:"USSR"},
+{y:1960,m:9,d:1,t:5.5,label:"Non-Aligned Movement Founded",desc:"25 nations meet in Belgrade to form a non-aligned bloc refusing to join either Cold War camp. Eisenhower dismisses it; Khrushchev courts it.",lv:2,side:"Both"},
+{y:1961,m:4,d:12,t:6.8,label:"Gagarin in Space",desc:"Yuri Gagarin becomes the first human in space. Soviet triumph. Kennedy galvanised — announces Moon mission goal. The Space Race enters its crucial phase.",lv:3,side:"USSR"},
+{y:1961,m:5,d:25,t:6.5,label:"JFK Moon Speech to Congress",desc:"Kennedy commits the US to landing a man on the Moon before the decade ends — directly challenging Soviet space supremacy.",lv:3,side:"US"},
+{y:1962,m:2,d:20,t:6.2,label:"John Glenn Orbits Earth",desc:"First American to orbit Earth. US closes the gap in the Space Race. Glenn becomes a national hero in the shadow of the Cuban Missile Crisis.",lv:3,side:"US"},
+{y:1962,m:7,d:9,t:7.5,label:"Starfish Prime — Nuclear EMP Test",desc:"US detonates a 1.4-megaton H-bomb 400km above the Pacific. The electromagnetic pulse disables satellites and street lights in Hawaii. Space weaponisation debate ignites.",lv:4,side:"US"},
+{y:1963,m:4,d:22,t:6.2,label:"Vatican Encyclical Pacem in Terris",desc:"Pope John XXIII appeals directly to Cold War leaders for nuclear disarmament — the first papal document addressed to all people, not just Catholics.",lv:2,side:"Both"},
+{y:1964,m:11,d:3,t:5.8,label:"Johnson Wins Landslide — Escalation Coming",desc:"LBJ wins 61% of vote. Despite running as the peace candidate against Goldwater, he secretly plans Vietnam escalation.",lv:3,side:"US"},
+{y:1965,m:11,d:14,t:6.5,label:"Battle of Ia Drang Valley",desc:"First major battle between US Army and North Vietnamese regulars. 234 Americans killed. North Vietnam proves it can stand and fight — attrition war begins.",lv:3,side:"Both"},
+{y:1966,m:2,d:7,t:6.0,label:"US Begins Bombing North Vietnam Cities",desc:"Rolling Thunder escalates to urban targets. Hanoi and Haiphong hit. International outrage grows. Anti-war movement in US intensifies.",lv:3,side:"US"},
+{y:1966,m:9,d:30,t:5.5,label:"France Leaves NATO Command",desc:"De Gaulle withdraws French forces from NATO's integrated command. NATO headquarters moves from Paris to Brussels. Alliance unity fractures.",lv:3,side:"Both"},
+{y:1967,m:2,d:14,t:5.0,label:"Treaty of Tlatelolco",desc:"Latin American nations create first nuclear-free zone in the inhabited world, showing regional states could resist superpower nuclear pressures.",lv:2,side:"Both"},
+{y:1967,m:10,d:9,t:5.5,label:"Che Guevara Killed in Bolivia",desc:"CIA-assisted Bolivian forces execute Che Guevara. His death martyrs him globally but ends the immediate revolutionary threat in Latin America.",lv:3,side:"US"},
+{y:1968,m:4,d:4,t:5.8,label:"MLK Assassination — US in Crisis",desc:"Martin Luther King shot in Memphis. US cities burn. 110 riots. Army deploys in Washington DC. The social fractures that Soviet propaganda exploited are laid bare.",lv:3,side:"US"},
+{y:1968,m:6,d:6,t:5.5,label:"RFK Assassination",desc:"Robert Kennedy shot hours after winning the California primary. America's crisis deepens. Nixon will win in November on a 'law and order' platform.",lv:3,side:"US"},
+{y:1969,m:7,d:25,t:5.2,label:"Nixon Doctrine Announced",desc:"Nixon declares Asian allies must provide their own troops while the US provides support. Vietnamization begins. The US role in Asia formally contracted.",lv:2,side:"US"},
+{y:1969,m:10,d:15,t:5.8,label:"Vietnam Moratorium — Largest US Protest",desc:"Two million Americans protest the Vietnam War in the largest single-day demonstrations in US history. Nixon announces secret escalation anyway.",lv:3,side:"US"},
+{y:1970,m:4,d:11,t:5.5,label:"Apollo 13 Crisis",desc:"Near-disaster in space. Successful rescue becomes a US morale boost and demonstration of technical capacity at height of Cold War competition.",lv:2,side:"US"},
+{y:1970,m:9,d:28,t:5.2,label:"Nasser Dies — Soviet Influence Tested",desc:"Egyptian President Nasser's death reshuffles Middle East alignments. Sadat will later expel Soviet advisers, shifting the regional balance.",lv:3,side:"Both"},
+{y:1971,m:10,d:25,t:5.5,label:"China Admitted to UN",desc:"PRC replaces Taiwan at the UN Security Council. A massive shift in global diplomacy following Nixon's opening. Taiwan loses its seat as 'China'.",lv:3,side:"Both"},
+{y:1972,m:1,d:22,t:5.0,label:"UK, Ireland, Denmark Join EEC",desc:"European Economic Community expands, deepening Western European integration and reducing US bilateral dominance of European allies.",lv:2,side:"Both"},
+{y:1972,m:5,d:22,t:4.8,label:"Nixon Visits Moscow — SALT I Summit",desc:"First US presidential visit to Moscow. Nixon and Brezhnev sign SALT I and the ABM Treaty. Détente formalised at its peak.",lv:2,side:"Both"},
+{y:1972,m:12,d:18,t:6.0,label:"Christmas Bombing of Hanoi",desc:"Operation Linebacker II — 11 days of B-52 raids on North Vietnam. Most intensive bombing of the war. International outrage. Breaks the peace-talks deadlock.",lv:3,side:"US"},
+{y:1973,m:3,d:29,t:5.5,label:"Last US Combat Troops Leave Vietnam",desc:"Direct American military involvement ends. 58,279 Americans died. North Vietnam continues the war. Saigon will fall in two years.",lv:3,side:"US"},
+{y:1973,m:10,d:17,t:7.0,label:"Arab Oil Embargo",desc:"OPEC Arab members embargo oil to US and Netherlands for supporting Israel. Oil prices quadruple. Western economies enter stagflation. Energy as a Cold War weapon.",lv:4,side:"Both"},
+{y:1974,m:5,d:18,t:5.5,label:"India Tests Nuclear Bomb",desc:"India's 'Smiling Buddha' test shocks the world. Another nuclear power outside the NPT. Pakistan begins its own programme.",lv:3,side:"Both"},
+{y:1975,m:8,d:1,t:4.5,label:"Helsinki Final Act Signed",desc:"35 nations accept post-WWII European borders. Human rights Basket III provisions give dissidents a legal basis to challenge Soviet power.",lv:2,side:"Both"},
+{y:1975,m:12,d:19,t:5.8,label:"CIA Revelations — Church Committee",desc:"Senate committee exposes CIA assassination plots, coups, and illegal domestic surveillance. US intelligence capability severely curtailed.",lv:3,side:"US"},
+{y:1976,m:9,d:9,t:5.0,label:"Mao Zedong Dies",desc:"Mao's death ends an era. Gang of Four arrested. Deng Xiaoping will eventually take power and open China's economy — transforming the Cold War triangle.",lv:3,side:"Both"},
+{y:1976,m:11,d:2,t:5.0,label:"Carter Elected",desc:"Jimmy Carter defeats Ford. Promises human rights foreign policy. Will oversee détente's collapse and the return of Cold War confrontation.",lv:2,side:"US"},
+{y:1977,m:9,d:7,t:4.5,label:"Panama Canal Treaties Signed",desc:"US agrees to hand over the Canal by 1999. Right-wing opposition in US frames it as Cold War weakness. Reagan uses it as a rallying cause.",lv:2,side:"US"},
+{y:1978,m:4,d:27,t:6.5,label:"Saur Revolution in Afghanistan",desc:"Communist PDPA seizes power in Kabul. Soviet enthusiasm quickly turns to alarm as the regime tears itself apart. The path to invasion begins.",lv:3,side:"USSR"},
+{y:1978,m:12,d:15,t:5.5,label:"US Normalises Relations with China",desc:"Carter formally recognises the PRC and severs diplomatic ties with Taiwan. The anti-Soviet triangular strategy reaches its institutional conclusion.",lv:3,side:"US"},
+{y:1979,m:3,d:26,t:5.5,label:"Egypt-Israel Peace Treaty Signed",desc:"First Arab-Israel peace deal, brokered by Carter at Camp David. Egypt's Sadat is later assassinated. Soviet influence in Middle East weakened.",lv:3,side:"US"},
+{y:1979,m:7,d:17,t:6.0,label:"Sandinistas Take Nicaragua",desc:"Leftist Sandinistas overthrow Somoza. Reagan will funnel millions to the Contras — sparking the Iran-Contra scandal.",lv:3,side:"Both"},
+{y:1979,m:11,d:4,t:7.2,label:"Iran Hostage Crisis Begins",desc:"Iranian students seize US embassy, holding 52 diplomats for 444 days. The failed rescue attempt destroys Carter's presidency.",lv:4,side:"Both"},
+{y:1980,m:3,d:24,t:6.5,label:"El Salvador Archbishop Romero Assassinated",desc:"US-backed military-linked death squads kill Archbishop Romero. Central America becomes a Cold War battleground for proxy conflict.",lv:3,side:"Both"},
+{y:1980,m:7,d:19,t:7.2,label:"Moscow Olympics Boycott",desc:"65 nations boycott the Moscow Olympics following the Afghanistan invasion. The USSR retaliates by boycotting LA 1984. Sport weaponised.",lv:4,side:"US"},
+{y:1981,m:1,d:20,t:7.0,label:"Iran Hostages Released — Reagan's First Day",desc:"52 US hostages freed after 444 days, minutes after Reagan's inauguration. Coincidence or back-channel deal? Still debated.",lv:3,side:"US"},
+{y:1981,m:3,d:30,t:6.8,label:"Reagan Assassination Attempt",desc:"John Hinckley shoots Reagan outside a Washington hotel. The Soviet Politburo briefly goes on alert, fearing a conspiracy or coup.",lv:4,side:"US"},
+{y:1981,m:10,d:6,t:6.5,label:"Sadat Assassinated",desc:"Egyptian President Sadat killed by Islamist soldiers during a military parade. His peace with Israel survives but Middle East realignment accelerates.",lv:3,side:"Both"},
+{y:1982,m:4,d:2,t:6.8,label:"Falklands War",desc:"Argentina invades British Falkland Islands. Britain retakes them in 74 days. Reagan caught between ally Britain and regional partner Argentina.",lv:3,side:"Both"},
+{y:1982,m:6,d:6,t:6.5,label:"Israel Invades Lebanon",desc:"IDF advances to Beirut. PLO expelled. US Marines deployed as peacekeepers. 241 Americans killed in 1983 bombing. Syria backed by USSR.",lv:3,side:"Both"},
+{y:1982,m:11,d:22,t:7.0,label:"Reagan Approves NSDD-75 — Roll Back Strategy",desc:"Top-secret directive shifts US strategy from containment to active rollback of Soviet power. The most aggressive Cold War posture since NSC-68.",lv:4,side:"US"},
+{y:1983,m:2,d:7,t:7.5,label:"Reagan Doubles CIA Funding for Afghan Mujahideen",desc:"CIA Operation Cyclone greatly expands — Stinger missiles, training, billions in funding. The mujahideen become a proxy force capable of downing Soviet aircraft.",lv:4,side:"US"},
+{y:1983,m:3,d:4,t:7.8,label:"RYAN Intelligence Operation Expands",desc:"KGB Operation RYAN — watching for signs of a US nuclear first strike — goes into overdrive. Soviet intelligence genuinely believes war is approaching.",lv:4,side:"USSR"},
+{y:1983,m:10,d:23,t:7.8,label:"Beirut Barracks Bombing",desc:"Hezbollah bombs kill 241 US Marines and 58 French paratroopers. Reagan withdraws US forces from Lebanon. Islamist terror as a Cold War weapon.",lv:4,side:"Both"},
+{y:1983,m:10,d:25,t:7.5,label:"US Invades Grenada",desc:"Operation Urgent Fury — Reagan overthrows Marxist government in Grenada. First direct US military action against a communist government since Korea.",lv:4,side:"US"},
+{y:1984,m:7,d:28,t:7.8,label:"Soviet Bloc Boycotts LA Olympics",desc:"USSR and 14 allies boycott Los Angeles Olympics in retaliation for 1980 Moscow boycott. Cold War at its most petty.",lv:4,side:"USSR"},
+{y:1984,m:11,d:6,t:7.5,label:"Reagan Re-elected in Landslide",desc:"Reagan wins 49 states. Mandate for confrontational Cold War policy confirmed. Soviet leadership deeply alarmed by his second term.",lv:4,side:"US"},
+{y:1985,m:7,d:10,t:5.5,label:"Rainbow Warrior Bombing",desc:"French intelligence sinks Greenpeace vessel Rainbow Warrior in New Zealand, killing a photographer. Exposes Western state terrorism.",lv:3,side:"Both"},
+{y:1985,m:10,d:7,t:6.2,label:"Achille Lauro Hijacking",desc:"Palestinian terrorists seize Italian cruise ship. US intercepts Egyptian plane carrying hijackers. US-Italian diplomatic crisis. Terrorism as Cold War instrument.",lv:3,side:"Both"},
+{y:1986,m:1,d:28,t:5.5,label:"Challenger Disaster",desc:"Space Shuttle Challenger explodes 73 seconds after launch, killing all 7 crew. US space programme suspended. Soviet media sympathetic but internally triumphant.",lv:3,side:"US"},
+{y:1986,m:4,d:15,t:7.0,label:"US Bombs Libya",desc:"Operation El Dorado Canyon — US strikes Tripoli and Benghazi in retaliation for Libyan terrorism. Gaddafi's daughter killed. USSR condemns.",lv:3,side:"US"},
+{y:1986,m:11,d:3,t:6.5,label:"Iran-Contra Scandal Breaks",desc:"Revelation that Reagan secretly sold arms to Iran and diverted profits to Nicaraguan Contras. Worst US political crisis since Watergate. Reagan damaged but survives.",lv:3,side:"US"},
+{y:1987,m:6,d:12,t:5.0,label:"Reagan 'Tear Down This Wall' Speech",desc:"Reagan speaks at the Brandenburg Gate: 'Mr. Gorbachev, tear down this wall!' Gorbachev privately dismisses it as theatre. History proves otherwise.",lv:2,side:"US"},
+{y:1987,m:10,d:19,t:5.5,label:"Black Monday Stock Market Crash",desc:"Global stock markets crash — Dow drops 22% in one day. Questions US economic model's resilience. USSR notes Western financial instability.",lv:3,side:"Both"},
+{y:1988,m:7,d:3,t:6.5,label:"USS Vincennes Shoots Down Iran Air 655",desc:"US Navy missile cruiser destroys an Iranian civilian airliner, killing 290 people. Mistakes a scheduled flight for an F-14. Iran vows revenge.",lv:3,side:"US"},
+{y:1988,m:12,d:21,t:5.5,label:"Lockerbie Bombing",desc:"Pan Am 103 blown up over Scotland, killing 270. Libya responsible. US-Soviet agreement on terrorism coordination tested.",lv:3,side:"Both"},
+{y:1989,m:1,d:7,t:3.8,label:"Emperor Hirohito Dies",desc:"Japan's postwar era closes. US-Japan security alliance now central pillar of Pacific Cold War architecture with no wartime complications.",lv:2,side:"Both"},
+{y:1989,m:2,d:15,t:3.5,label:"Last Soviet Troops Leave Afghanistan",desc:"General Gromov walks across the Friendship Bridge — last Soviet soldier to leave Afghanistan after 9 years. 15,000 Soviets dead.",lv:2,side:"USSR"},
+{y:1989,m:6,d:4,t:4.0,label:"Tiananmen Square Massacre",desc:"Chinese Army crushes pro-democracy demonstrators. Hundreds killed. Gorbachev had just visited Beijing. The contrast between Soviet glasnost and Chinese repression is stark.",lv:2,side:"Both"},
+{y:1989,m:10,d:23,t:4.0,label:"Hungary Becomes a Republic",desc:"Hungary formally abolishes the People's Republic and declares itself a democratic republic. The first Eastern Bloc state to peacefully transform.",lv:2,side:"Both"},
+{y:1989,m:12,d:22,t:3.5,label:"Romanian Revolution — Ceausescu Executed",desc:"Ceausescu flees, is captured and shot on Christmas Day. The only violent revolution in Eastern Europe's 1989 wave.",lv:2,side:"Both"},
+{y:1990,m:2,d:7,t:3.2,label:"Soviet Communist Party Loses Monopoly",desc:"CPSU central committee votes to end the party's constitutionally guaranteed monopoly on power. The legal basis for Soviet rule dissolves.",lv:2,side:"USSR"},
+{y:1990,m:3,d:11,t:3.5,label:"Lithuania Declares Independence",desc:"Lithuanian parliament votes to restore independence. Gorbachev applies economic pressure. The first Soviet republic to break away.",lv:2,side:"USSR"},
+{y:1990,m:8,d:2,t:5.5,label:"Iraq Invades Kuwait",desc:"Saddam Hussein annexes Kuwait. Bush assembles a 34-nation coalition with Soviet acquiescence — a signal of new superpower cooperation.",lv:3,side:"Both"},
+{y:1990,m:11,d:8,t:3.8,label:"Bush Orders Desert Shield Forces",desc:"Massive US military deployment to Saudi Arabia for potential Kuwait liberation. Soviet passive consent marks end of proxy war era.",lv:2,side:"Both"},
+{y:1991,m:1,d:17,t:4.5,label:"Gulf War — Desert Storm Begins",desc:"Coalition forces launch massive air campaign against Iraq. 100-hour ground war follows. Soviet acquiescence to US military action marks Cold War's end.",lv:2,side:"Both"},
+{y:1991,m:3,d:3,t:2.8,label:"Baltic States Independence Crisis",desc:"Lithuania, Latvia, Estonia in tense standoff with Moscow. Soviet military action in Vilnius. International pressure mounts on Gorbachev.",lv:2,side:"USSR"},
+{y:1991,m:6,d:12,t:2.5,label:"Yeltsin Elected Russian President",desc:"Boris Yeltsin wins Russia's first direct presidential election with 57%. A democratic mandate independent of Gorbachev. Soviet internal power shifts.",lv:1,side:"USSR"},
+{y:1991,m:9,d:6,t:2.2,label:"USSR Recognises Baltic Independence",desc:"Moscow formally recognises independence of Estonia, Latvia, Lithuania. The first territorial dissolution of the USSR.",lv:1,side:"USSR"},
 ];
-
-
 
 const MO_S=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const MO_L=['January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -777,17 +822,13 @@ EVENTS.forEach(ev=>{
   ev.dv=ev.y+(ev.m-1)/12+(ev.d-1)/365;
   ev.dateStr=`${MO_L[ev.m-1]} ${ev.d}, ${ev.y}`;
   ev.dateShort=`${MO_S[ev.m-1]} ${ev.d}, ${ev.y}`;
-  const tensionBoost=ev.t>=8.5?2:ev.t>=6.5?1:0;
-  ev.sig=Math.max(1,Math.min(6,ev.lv+tensionBoost));
 });
 EVENTS.sort((a,b)=>a.dv-b.dv);
 
 // ══════════════════════════════════════════════════════
 // STATE
 // ══════════════════════════════════════════════════════
-const MIN_Y=EVENTS[0].y,MAX_Y=EVENTS[EVENTS.length-1].y;
-document.getElementById('eventCountStat').textContent=String(EVENTS.length);
-document.getElementById('yearsStat').textContent=String((MAX_Y-MIN_Y)+1);
+const MIN_Y=1947,MAX_Y=1991;
 let vs=MIN_Y,ve=MAX_Y+1;
 let fSide='all';
 let eraFilter='all';
@@ -829,10 +870,8 @@ function visEvs(){
     if(fSide==='US'&&ev.side!=='US'&&ev.side!=='Both')return false;
     if(fSide==='USSR'&&ev.side!=='USSR'&&ev.side!=='Both')return false;
     if(fSide==='critical'&&ev.lv<5)return false;
-    if(span>25&&ev.sig<4)return false;
-    if(span>16&&span<=25&&ev.sig<3)return false;
-    if(span>10&&span<=16&&ev.sig<2)return false;
-    if(span>6&&span<=10&&ev.lv<2)return false;
+    if(span>18&&ev.lv<3)return false;
+    if(span>8&&span<=18&&ev.lv<2)return false;
     return true;
   });
 }
@@ -1004,12 +1043,10 @@ function drawMain(){
     ctx.fillStyle=grd;ctx.fill();
     ctx.restore();
 
-    // line glow pass — use shadow instead of filter (filter causes glitch)
+    // line glow pass
     ctx.save();
     ctx.beginPath();
-    lineEvs.forEach((ev,i)=>{
-      i===0?ctx.moveTo(xp(ev.dv),yp(ev.t)):ctx.lineTo(xp(ev.dv),yp(ev.t));
-    });
+    lineEvs.forEach((ev,i)=>i===0?ctx.moveTo(xp(ev.dv),yp(ev.t)):ctx.lineTo(xp(ev.dv),yp(ev.t)));
     ctx.strokeStyle='rgba(200,146,42,0.35)';
     ctx.lineWidth=6;ctx.lineJoin='round';
     ctx.shadowColor='rgba(200,146,42,0.6)';
@@ -1020,9 +1057,7 @@ function drawMain(){
     // main line
     ctx.save();
     ctx.beginPath();
-    lineEvs.forEach((ev,i)=>{
-      i===0?ctx.moveTo(xp(ev.dv),yp(ev.t)):ctx.lineTo(xp(ev.dv),yp(ev.t));
-    });
+    lineEvs.forEach((ev,i)=>i===0?ctx.moveTo(xp(ev.dv),yp(ev.t)):ctx.lineTo(xp(ev.dv),yp(ev.t)));
     ctx.strokeStyle='rgba(200,146,42,0.95)';
     ctx.lineWidth=2;ctx.lineJoin='round';
     ctx.stroke();
